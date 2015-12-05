@@ -4,6 +4,7 @@
 # Cloning grpc, then 'make'
 git clone https://github.com/grpc/grpc.git
 cd grpc
+git checkout release-0_12   ## The master branch a.t.m. is missing grpc++.h
 git submodule update --init
 make  ## the grpc plugin ends up in bins/opt
 
