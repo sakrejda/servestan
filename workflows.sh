@@ -19,3 +19,13 @@ make  ## the grpc plugin ends up in bins/opt
 # Use the protobuf compiler to produce message interface
 # code:
 ../grpc/bins/opt/protobuf/protoc --cpp_out=src ./proto/stanc.proto
+
+# Oy, where are all the pieces hiding:
+g++ -std=c++11 -I src/ -I ../grpc/include/ \
+  -I ../grpc/third_party/protobuf/src/ -I ../stan/src/ \
+  -I ../math/lib/boost_1.58.0/ -L ../grpc/libs/opt/ \
+  -lgrpc++_unsecure -lgrpc -lgpr -lprotobuf -lpthread \
+  -ldl -o servestan src/servestan/stanc_server.cpp 
+
+
+
