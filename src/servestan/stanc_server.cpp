@@ -27,11 +27,11 @@ namespace stan {
         reply->set_cpp_code(cpp_stream.str());
         if (valid_model) {
           if (err_stream.tellp() == 0) 
-            reply->set_state(stan::serve::StanCompileResponse::State::SUCCESS);
+            reply->set_state(stan::serve::StanCompileResponse::SUCCESS);
           else 
-            reply->set_state(stan::serve::StanCompileResponse::State::WARN);
+            reply->set_state(stan::serve::StanCompileResponse::WARN);
         } else {
-          reply->set_state(stan::serve::StanCompileResponse::State::ERROR);
+          reply->set_state(stan::serve::StanCompileResponse::ERROR);
         }
           return grpc::Status::OK;
       }
