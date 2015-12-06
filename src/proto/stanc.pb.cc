@@ -16,6 +16,9 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 
+namespace stan {
+namespace serve {
+
 namespace {
 
 const ::google::protobuf::Descriptor* StanMessage_descriptor_ = NULL;
@@ -28,9 +31,6 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* StanCompileRequest_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   StanCompileRequest_reflection_ = NULL;
-const ::google::protobuf::Descriptor* StanCompileCheck_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  StanCompileCheck_reflection_ = NULL;
 const ::google::protobuf::Descriptor* StanCompileResponse_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   StanCompileResponse_reflection_ = NULL;
@@ -46,23 +46,22 @@ void protobuf_AssignDesc_proto_2fstanc_2eproto() {
       "proto/stanc.proto");
   GOOGLE_CHECK(file != NULL);
   StanMessage_descriptor_ = file->message_type(0);
-  static const int StanMessage_offsets_[4] = {
+  static const int StanMessage_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StanMessage, type_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StanMessage, stan_compile_request_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StanMessage, stan_compile_response_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StanMessage, stan_compile_check_),
   };
   StanMessage_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
       StanMessage_descriptor_,
       StanMessage::default_instance_,
       StanMessage_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StanMessage, _has_bits_[0]),
+      -1,
       -1,
       -1,
       sizeof(StanMessage),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StanMessage, _internal_metadata_),
-      -1);
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StanMessage, _is_default_instance_));
   StanMessage_Type_descriptor_ = StanMessage_descriptor_->enum_type(0);
   StanVersion_descriptor_ = file->message_type(1);
   static const int StanVersion_offsets_[3] = {
@@ -75,12 +74,12 @@ void protobuf_AssignDesc_proto_2fstanc_2eproto() {
       StanVersion_descriptor_,
       StanVersion::default_instance_,
       StanVersion_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StanVersion, _has_bits_[0]),
+      -1,
       -1,
       -1,
       sizeof(StanVersion),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StanVersion, _internal_metadata_),
-      -1);
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StanVersion, _is_default_instance_));
   StanCompileRequest_descriptor_ = file->message_type(2);
   static const int StanCompileRequest_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StanCompileRequest, model_name_),
@@ -92,47 +91,29 @@ void protobuf_AssignDesc_proto_2fstanc_2eproto() {
       StanCompileRequest_descriptor_,
       StanCompileRequest::default_instance_,
       StanCompileRequest_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StanCompileRequest, _has_bits_[0]),
+      -1,
       -1,
       -1,
       sizeof(StanCompileRequest),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StanCompileRequest, _internal_metadata_),
-      -1);
-  StanCompileCheck_descriptor_ = file->message_type(3);
-  static const int StanCompileCheck_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StanCompileCheck, hash_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StanCompileCheck, stan_version_),
-  };
-  StanCompileCheck_reflection_ =
-    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
-      StanCompileCheck_descriptor_,
-      StanCompileCheck::default_instance_,
-      StanCompileCheck_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StanCompileCheck, _has_bits_[0]),
-      -1,
-      -1,
-      sizeof(StanCompileCheck),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StanCompileCheck, _internal_metadata_),
-      -1);
-  StanCompileResponse_descriptor_ = file->message_type(4);
-  static const int StanCompileResponse_offsets_[5] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StanCompileResponse, hash_),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StanCompileRequest, _is_default_instance_));
+  StanCompileResponse_descriptor_ = file->message_type(3);
+  static const int StanCompileResponse_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StanCompileResponse, state_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StanCompileResponse, cpp_code_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StanCompileResponse, messages_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StanCompileResponse, stan_version_),
   };
   StanCompileResponse_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
       StanCompileResponse_descriptor_,
       StanCompileResponse::default_instance_,
       StanCompileResponse_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StanCompileResponse, _has_bits_[0]),
+      -1,
       -1,
       -1,
       sizeof(StanCompileResponse),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StanCompileResponse, _internal_metadata_),
-      -1);
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StanCompileResponse, _is_default_instance_));
   StanCompileResponse_State_descriptor_ = StanCompileResponse_descriptor_->enum_type(0);
 }
 
@@ -153,8 +134,6 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       StanCompileRequest_descriptor_, &StanCompileRequest::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-      StanCompileCheck_descriptor_, &StanCompileCheck::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       StanCompileResponse_descriptor_, &StanCompileResponse::default_instance());
 }
 
@@ -167,8 +146,6 @@ void protobuf_ShutdownFile_proto_2fstanc_2eproto() {
   delete StanVersion_reflection_;
   delete StanCompileRequest::default_instance_;
   delete StanCompileRequest_reflection_;
-  delete StanCompileCheck::default_instance_;
-  delete StanCompileCheck_reflection_;
   delete StanCompileResponse::default_instance_;
   delete StanCompileResponse_reflection_;
 }
@@ -180,41 +157,35 @@ void protobuf_AddDesc_proto_2fstanc_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\021proto/stanc.proto\"\252\002\n\013StanMessage\022\037\n\004t"
-    "ype\030\001 \002(\0162\021.StanMessage.Type\0221\n\024stan_com"
-    "pile_request\030\002 \001(\0132\023.StanCompileRequest\022"
-    "3\n\025stan_compile_response\030\003 \001(\0132\024.StanCom"
-    "pileResponse\022-\n\022stan_compile_check\030\004 \001(\013"
-    "2\021.StanCompileCheck\"c\n\004Type\022\016\n\nSTAN_EMPT"
-    "Y\020\000\022\030\n\024STAN_COMPILE_REQUEST\020\001\022\031\n\025STAN_CO"
-    "MPILE_RESPONSE\020\002\022\026\n\022STAN_COMPILE_CHECK\020\003"
-    "\"N\n\013StanVersion\022\017\n\007version\030\001 \002(\t\022\026\n\016stan"
-    "_math_hash\030\002 \001(\t\022\026\n\016stan_stan_hash\030\003 \001(\t"
-    "\"U\n\022StanCompileRequest\022\022\n\nmodel_name\030\001 \001"
-    "(\t\022\022\n\nmodel_code\030\002 \002(\t\022\027\n\017model_file_nam"
-    "e\030\003 \001(\t\"D\n\020StanCompileCheck\022\014\n\004hash\030\001 \002("
-    "\t\022\"\n\014stan_version\030\002 \001(\0132\014.StanVersion\"\361\001"
-    "\n\023StanCompileResponse\022\014\n\004hash\030\001 \002(\t\022)\n\005s"
-    "tate\030\002 \002(\0162\032.StanCompileResponse.State\022\020"
-    "\n\010cpp_code\030\003 \001(\t\022\020\n\010messages\030\004 \001(\t\022\"\n\014st"
-    "an_version\030\005 \002(\0132\014.StanVersion\"Y\n\005State\022"
-    "\026\n\022COMPILE_INCOMPLETE\020\000\022\023\n\017COMPILE_SUCCE"
-    "SS\020\001\022\020\n\014COMPILE_WARN\020\002\022\021\n\rCOMPILE_ERROR\020"
-    "\0032\212\001\n\016CompileService\022=\n\016CompileProgram\022\023"
-    ".StanCompileRequest\032\024.StanCompileRespons"
-    "e\"\000\0229\n\014CompileCheck\022\021.StanCompileCheck\032\024"
-    ".StanCompileResponse\"\000", 942);
+    "\n\021proto/stanc.proto\022\nstan.serve\"\225\002\n\013Stan"
+    "Message\022*\n\004type\030\001 \001(\0162\034.stan.serve.StanM"
+    "essage.Type\022<\n\024stan_compile_request\030\002 \001("
+    "\0132\036.stan.serve.StanCompileRequest\022>\n\025sta"
+    "n_compile_response\030\003 \001(\0132\037.stan.serve.St"
+    "anCompileResponse\"\\\n\004Type\022\013\n\007UNKNOWN\020\000\022\t"
+    "\n\005EMPTY\020\001\022\023\n\017COMPILE_REQUEST\020\002\022\024\n\020COMPIL"
+    "E_RESPONSE\020\003\022\021\n\rCOMPILE_CHECK\020\004\"N\n\013StanV"
+    "ersion\022\017\n\007version\030\001 \001(\t\022\026\n\016stan_math_has"
+    "h\030\002 \001(\t\022\026\n\016stan_stan_hash\030\003 \001(\t\"U\n\022StanC"
+    "ompileRequest\022\022\n\nmodel_name\030\001 \001(\t\022\022\n\nmod"
+    "el_code\030\002 \001(\t\022\027\n\017model_file_name\030\003 \001(\t\"\267"
+    "\001\n\023StanCompileResponse\0224\n\005state\030\002 \001(\0162%."
+    "stan.serve.StanCompileResponse.State\022\020\n\010"
+    "cpp_code\030\003 \001(\t\022\020\n\010messages\030\004 \001(\t\"F\n\005Stat"
+    "e\022\013\n\007UNKNOWN\020\000\022\016\n\nINCOMPLETE\020\001\022\013\n\007SUCCES"
+    "S\020\002\022\010\n\004WARN\020\003\022\t\n\005ERROR\020\0042e\n\016CompileServi"
+    "ce\022S\n\016CompileProgram\022\036.stan.serve.StanCo"
+    "mpileRequest\032\037.stan.serve.StanCompileRes"
+    "ponse\"\000b\006proto3", 775);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "proto/stanc.proto", &protobuf_RegisterTypes);
   StanMessage::default_instance_ = new StanMessage();
   StanVersion::default_instance_ = new StanVersion();
   StanCompileRequest::default_instance_ = new StanCompileRequest();
-  StanCompileCheck::default_instance_ = new StanCompileCheck();
   StanCompileResponse::default_instance_ = new StanCompileResponse();
   StanMessage::default_instance_->InitAsDefaultInstance();
   StanVersion::default_instance_->InitAsDefaultInstance();
   StanCompileRequest::default_instance_->InitAsDefaultInstance();
-  StanCompileCheck::default_instance_->InitAsDefaultInstance();
   StanCompileResponse::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_proto_2fstanc_2eproto);
 }
@@ -248,6 +219,7 @@ bool StanMessage_Type_IsValid(int value) {
     case 1:
     case 2:
     case 3:
+    case 4:
       return true;
     default:
       return false;
@@ -255,10 +227,11 @@ bool StanMessage_Type_IsValid(int value) {
 }
 
 #ifndef _MSC_VER
-const StanMessage_Type StanMessage::STAN_EMPTY;
-const StanMessage_Type StanMessage::STAN_COMPILE_REQUEST;
-const StanMessage_Type StanMessage::STAN_COMPILE_RESPONSE;
-const StanMessage_Type StanMessage::STAN_COMPILE_CHECK;
+const StanMessage_Type StanMessage::UNKNOWN;
+const StanMessage_Type StanMessage::EMPTY;
+const StanMessage_Type StanMessage::COMPILE_REQUEST;
+const StanMessage_Type StanMessage::COMPILE_RESPONSE;
+const StanMessage_Type StanMessage::COMPILE_CHECK;
 const StanMessage_Type StanMessage::Type_MIN;
 const StanMessage_Type StanMessage::Type_MAX;
 const int StanMessage::Type_ARRAYSIZE;
@@ -267,19 +240,18 @@ const int StanMessage::Type_ARRAYSIZE;
 const int StanMessage::kTypeFieldNumber;
 const int StanMessage::kStanCompileRequestFieldNumber;
 const int StanMessage::kStanCompileResponseFieldNumber;
-const int StanMessage::kStanCompileCheckFieldNumber;
 #endif  // !_MSC_VER
 
 StanMessage::StanMessage()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:StanMessage)
+  // @@protoc_insertion_point(constructor:stan.serve.StanMessage)
 }
 
 void StanMessage::InitAsDefaultInstance() {
-  stan_compile_request_ = const_cast< ::StanCompileRequest*>(&::StanCompileRequest::default_instance());
-  stan_compile_response_ = const_cast< ::StanCompileResponse*>(&::StanCompileResponse::default_instance());
-  stan_compile_check_ = const_cast< ::StanCompileCheck*>(&::StanCompileCheck::default_instance());
+  _is_default_instance_ = true;
+  stan_compile_request_ = const_cast< ::stan::serve::StanCompileRequest*>(&::stan::serve::StanCompileRequest::default_instance());
+  stan_compile_response_ = const_cast< ::stan::serve::StanCompileResponse*>(&::stan::serve::StanCompileResponse::default_instance());
 }
 
 StanMessage::StanMessage(const StanMessage& from)
@@ -287,20 +259,19 @@ StanMessage::StanMessage(const StanMessage& from)
     _internal_metadata_(NULL) {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:StanMessage)
+  // @@protoc_insertion_point(copy_constructor:stan.serve.StanMessage)
 }
 
 void StanMessage::SharedCtor() {
+    _is_default_instance_ = false;
   _cached_size_ = 0;
   type_ = 0;
   stan_compile_request_ = NULL;
   stan_compile_response_ = NULL;
-  stan_compile_check_ = NULL;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
 StanMessage::~StanMessage() {
-  // @@protoc_insertion_point(destructor:StanMessage)
+  // @@protoc_insertion_point(destructor:stan.serve.StanMessage)
   SharedDtor();
 }
 
@@ -308,7 +279,6 @@ void StanMessage::SharedDtor() {
   if (this != default_instance_) {
     delete stan_compile_request_;
     delete stan_compile_response_;
-    delete stan_compile_check_;
   }
 }
 
@@ -338,46 +308,31 @@ StanMessage* StanMessage::New(::google::protobuf::Arena* arena) const {
 }
 
 void StanMessage::Clear() {
-  if (_has_bits_[0 / 32] & 15u) {
-    type_ = 0;
-    if (has_stan_compile_request()) {
-      if (stan_compile_request_ != NULL) stan_compile_request_->::StanCompileRequest::Clear();
-    }
-    if (has_stan_compile_response()) {
-      if (stan_compile_response_ != NULL) stan_compile_response_->::StanCompileResponse::Clear();
-    }
-    if (has_stan_compile_check()) {
-      if (stan_compile_check_ != NULL) stan_compile_check_->::StanCompileCheck::Clear();
-    }
-  }
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  if (_internal_metadata_.have_unknown_fields()) {
-    mutable_unknown_fields()->Clear();
-  }
+  type_ = 0;
+  if (GetArenaNoVirtual() == NULL && stan_compile_request_ != NULL) delete stan_compile_request_;
+  stan_compile_request_ = NULL;
+  if (GetArenaNoVirtual() == NULL && stan_compile_response_ != NULL) delete stan_compile_response_;
+  stan_compile_response_ = NULL;
 }
 
 bool StanMessage::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:StanMessage)
+  // @@protoc_insertion_point(parse_start:stan.serve.StanMessage)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required .StanMessage.Type type = 1;
+      // optional .stan.serve.StanMessage.Type type = 1;
       case 1: {
         if (tag == 8) {
           int value;
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          if (::StanMessage_Type_IsValid(value)) {
-            set_type(static_cast< ::StanMessage_Type >(value));
-          } else {
-            mutable_unknown_fields()->AddVarint(1, value);
-          }
+          set_type(static_cast< ::stan::serve::StanMessage_Type >(value));
         } else {
           goto handle_unusual;
         }
@@ -385,7 +340,7 @@ bool StanMessage::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .StanCompileRequest stan_compile_request = 2;
+      // optional .stan.serve.StanCompileRequest stan_compile_request = 2;
       case 2: {
         if (tag == 18) {
          parse_stan_compile_request:
@@ -398,25 +353,12 @@ bool StanMessage::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .StanCompileResponse stan_compile_response = 3;
+      // optional .stan.serve.StanCompileResponse stan_compile_response = 3;
       case 3: {
         if (tag == 26) {
          parse_stan_compile_response:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_stan_compile_response()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(34)) goto parse_stan_compile_check;
-        break;
-      }
-
-      // optional .StanCompileCheck stan_compile_check = 4;
-      case 4: {
-        if (tag == 34) {
-         parse_stan_compile_check:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_stan_compile_check()));
         } else {
           goto handle_unusual;
         }
@@ -431,129 +373,94 @@ bool StanMessage::MergePartialFromCodedStream(
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
         break;
       }
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:StanMessage)
+  // @@protoc_insertion_point(parse_success:stan.serve.StanMessage)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:StanMessage)
+  // @@protoc_insertion_point(parse_failure:stan.serve.StanMessage)
   return false;
 #undef DO_
 }
 
 void StanMessage::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:StanMessage)
-  // required .StanMessage.Type type = 1;
-  if (has_type()) {
+  // @@protoc_insertion_point(serialize_start:stan.serve.StanMessage)
+  // optional .stan.serve.StanMessage.Type type = 1;
+  if (this->type() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       1, this->type(), output);
   }
 
-  // optional .StanCompileRequest stan_compile_request = 2;
-  if (has_stan_compile_request()) {
+  // optional .stan.serve.StanCompileRequest stan_compile_request = 2;
+  if (this->has_stan_compile_request()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, *this->stan_compile_request_, output);
   }
 
-  // optional .StanCompileResponse stan_compile_response = 3;
-  if (has_stan_compile_response()) {
+  // optional .stan.serve.StanCompileResponse stan_compile_response = 3;
+  if (this->has_stan_compile_response()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       3, *this->stan_compile_response_, output);
   }
 
-  // optional .StanCompileCheck stan_compile_check = 4;
-  if (has_stan_compile_check()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4, *this->stan_compile_check_, output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:StanMessage)
+  // @@protoc_insertion_point(serialize_end:stan.serve.StanMessage)
 }
 
 ::google::protobuf::uint8* StanMessage::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:StanMessage)
-  // required .StanMessage.Type type = 1;
-  if (has_type()) {
+  // @@protoc_insertion_point(serialize_to_array_start:stan.serve.StanMessage)
+  // optional .stan.serve.StanMessage.Type type = 1;
+  if (this->type() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       1, this->type(), target);
   }
 
-  // optional .StanCompileRequest stan_compile_request = 2;
-  if (has_stan_compile_request()) {
+  // optional .stan.serve.StanCompileRequest stan_compile_request = 2;
+  if (this->has_stan_compile_request()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         2, *this->stan_compile_request_, target);
   }
 
-  // optional .StanCompileResponse stan_compile_response = 3;
-  if (has_stan_compile_response()) {
+  // optional .stan.serve.StanCompileResponse stan_compile_response = 3;
+  if (this->has_stan_compile_response()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         3, *this->stan_compile_response_, target);
   }
 
-  // optional .StanCompileCheck stan_compile_check = 4;
-  if (has_stan_compile_check()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        4, *this->stan_compile_check_, target);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:StanMessage)
+  // @@protoc_insertion_point(serialize_to_array_end:stan.serve.StanMessage)
   return target;
 }
 
 int StanMessage::ByteSize() const {
   int total_size = 0;
 
-  // required .StanMessage.Type type = 1;
-  if (has_type()) {
+  // optional .stan.serve.StanMessage.Type type = 1;
+  if (this->type() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
   }
-  if (_has_bits_[1 / 32] & 14u) {
-    // optional .StanCompileRequest stan_compile_request = 2;
-    if (has_stan_compile_request()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          *this->stan_compile_request_);
-    }
 
-    // optional .StanCompileResponse stan_compile_response = 3;
-    if (has_stan_compile_response()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          *this->stan_compile_response_);
-    }
-
-    // optional .StanCompileCheck stan_compile_check = 4;
-    if (has_stan_compile_check()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          *this->stan_compile_check_);
-    }
-
+  // optional .stan.serve.StanCompileRequest stan_compile_request = 2;
+  if (this->has_stan_compile_request()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->stan_compile_request_);
   }
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
+
+  // optional .stan.serve.StanCompileResponse stan_compile_response = 3;
+  if (this->has_stan_compile_response()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->stan_compile_response_);
   }
+
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = total_size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
@@ -574,22 +481,14 @@ void StanMessage::MergeFrom(const ::google::protobuf::Message& from) {
 
 void StanMessage::MergeFrom(const StanMessage& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_type()) {
-      set_type(from.type());
-    }
-    if (from.has_stan_compile_request()) {
-      mutable_stan_compile_request()->::StanCompileRequest::MergeFrom(from.stan_compile_request());
-    }
-    if (from.has_stan_compile_response()) {
-      mutable_stan_compile_response()->::StanCompileResponse::MergeFrom(from.stan_compile_response());
-    }
-    if (from.has_stan_compile_check()) {
-      mutable_stan_compile_check()->::StanCompileCheck::MergeFrom(from.stan_compile_check());
-    }
+  if (from.type() != 0) {
+    set_type(from.type());
   }
-  if (from._internal_metadata_.have_unknown_fields()) {
-    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  if (from.has_stan_compile_request()) {
+    mutable_stan_compile_request()->::stan::serve::StanCompileRequest::MergeFrom(from.stan_compile_request());
+  }
+  if (from.has_stan_compile_response()) {
+    mutable_stan_compile_response()->::stan::serve::StanCompileResponse::MergeFrom(from.stan_compile_response());
   }
 }
 
@@ -606,17 +505,7 @@ void StanMessage::CopyFrom(const StanMessage& from) {
 }
 
 bool StanMessage::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
-  if (has_stan_compile_request()) {
-    if (!this->stan_compile_request_->IsInitialized()) return false;
-  }
-  if (has_stan_compile_response()) {
-    if (!this->stan_compile_response_->IsInitialized()) return false;
-  }
-  if (has_stan_compile_check()) {
-    if (!this->stan_compile_check_->IsInitialized()) return false;
-  }
   return true;
 }
 
@@ -628,8 +517,6 @@ void StanMessage::InternalSwap(StanMessage* other) {
   std::swap(type_, other->type_);
   std::swap(stan_compile_request_, other->stan_compile_request_);
   std::swap(stan_compile_response_, other->stan_compile_response_);
-  std::swap(stan_compile_check_, other->stan_compile_check_);
-  std::swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
 }
@@ -645,158 +532,92 @@ void StanMessage::InternalSwap(StanMessage* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // StanMessage
 
-// required .StanMessage.Type type = 1;
-bool StanMessage::has_type() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-void StanMessage::set_has_type() {
-  _has_bits_[0] |= 0x00000001u;
-}
-void StanMessage::clear_has_type() {
-  _has_bits_[0] &= ~0x00000001u;
-}
+// optional .stan.serve.StanMessage.Type type = 1;
 void StanMessage::clear_type() {
   type_ = 0;
-  clear_has_type();
 }
- ::StanMessage_Type StanMessage::type() const {
-  // @@protoc_insertion_point(field_get:StanMessage.type)
-  return static_cast< ::StanMessage_Type >(type_);
+ ::stan::serve::StanMessage_Type StanMessage::type() const {
+  // @@protoc_insertion_point(field_get:stan.serve.StanMessage.type)
+  return static_cast< ::stan::serve::StanMessage_Type >(type_);
 }
- void StanMessage::set_type(::StanMessage_Type value) {
-  assert(::StanMessage_Type_IsValid(value));
-  set_has_type();
+ void StanMessage::set_type(::stan::serve::StanMessage_Type value) {
+  
   type_ = value;
-  // @@protoc_insertion_point(field_set:StanMessage.type)
+  // @@protoc_insertion_point(field_set:stan.serve.StanMessage.type)
 }
 
-// optional .StanCompileRequest stan_compile_request = 2;
+// optional .stan.serve.StanCompileRequest stan_compile_request = 2;
 bool StanMessage::has_stan_compile_request() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-void StanMessage::set_has_stan_compile_request() {
-  _has_bits_[0] |= 0x00000002u;
-}
-void StanMessage::clear_has_stan_compile_request() {
-  _has_bits_[0] &= ~0x00000002u;
+  return !_is_default_instance_ && stan_compile_request_ != NULL;
 }
 void StanMessage::clear_stan_compile_request() {
-  if (stan_compile_request_ != NULL) stan_compile_request_->::StanCompileRequest::Clear();
-  clear_has_stan_compile_request();
+  if (GetArenaNoVirtual() == NULL && stan_compile_request_ != NULL) delete stan_compile_request_;
+  stan_compile_request_ = NULL;
 }
-const ::StanCompileRequest& StanMessage::stan_compile_request() const {
-  // @@protoc_insertion_point(field_get:StanMessage.stan_compile_request)
+const ::stan::serve::StanCompileRequest& StanMessage::stan_compile_request() const {
+  // @@protoc_insertion_point(field_get:stan.serve.StanMessage.stan_compile_request)
   return stan_compile_request_ != NULL ? *stan_compile_request_ : *default_instance_->stan_compile_request_;
 }
-::StanCompileRequest* StanMessage::mutable_stan_compile_request() {
-  set_has_stan_compile_request();
+::stan::serve::StanCompileRequest* StanMessage::mutable_stan_compile_request() {
+  
   if (stan_compile_request_ == NULL) {
-    stan_compile_request_ = new ::StanCompileRequest;
+    stan_compile_request_ = new ::stan::serve::StanCompileRequest;
   }
-  // @@protoc_insertion_point(field_mutable:StanMessage.stan_compile_request)
+  // @@protoc_insertion_point(field_mutable:stan.serve.StanMessage.stan_compile_request)
   return stan_compile_request_;
 }
-::StanCompileRequest* StanMessage::release_stan_compile_request() {
-  clear_has_stan_compile_request();
-  ::StanCompileRequest* temp = stan_compile_request_;
+::stan::serve::StanCompileRequest* StanMessage::release_stan_compile_request() {
+  
+  ::stan::serve::StanCompileRequest* temp = stan_compile_request_;
   stan_compile_request_ = NULL;
   return temp;
 }
-void StanMessage::set_allocated_stan_compile_request(::StanCompileRequest* stan_compile_request) {
+void StanMessage::set_allocated_stan_compile_request(::stan::serve::StanCompileRequest* stan_compile_request) {
   delete stan_compile_request_;
   stan_compile_request_ = stan_compile_request;
   if (stan_compile_request) {
-    set_has_stan_compile_request();
+    
   } else {
-    clear_has_stan_compile_request();
+    
   }
-  // @@protoc_insertion_point(field_set_allocated:StanMessage.stan_compile_request)
+  // @@protoc_insertion_point(field_set_allocated:stan.serve.StanMessage.stan_compile_request)
 }
 
-// optional .StanCompileResponse stan_compile_response = 3;
+// optional .stan.serve.StanCompileResponse stan_compile_response = 3;
 bool StanMessage::has_stan_compile_response() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-void StanMessage::set_has_stan_compile_response() {
-  _has_bits_[0] |= 0x00000004u;
-}
-void StanMessage::clear_has_stan_compile_response() {
-  _has_bits_[0] &= ~0x00000004u;
+  return !_is_default_instance_ && stan_compile_response_ != NULL;
 }
 void StanMessage::clear_stan_compile_response() {
-  if (stan_compile_response_ != NULL) stan_compile_response_->::StanCompileResponse::Clear();
-  clear_has_stan_compile_response();
+  if (GetArenaNoVirtual() == NULL && stan_compile_response_ != NULL) delete stan_compile_response_;
+  stan_compile_response_ = NULL;
 }
-const ::StanCompileResponse& StanMessage::stan_compile_response() const {
-  // @@protoc_insertion_point(field_get:StanMessage.stan_compile_response)
+const ::stan::serve::StanCompileResponse& StanMessage::stan_compile_response() const {
+  // @@protoc_insertion_point(field_get:stan.serve.StanMessage.stan_compile_response)
   return stan_compile_response_ != NULL ? *stan_compile_response_ : *default_instance_->stan_compile_response_;
 }
-::StanCompileResponse* StanMessage::mutable_stan_compile_response() {
-  set_has_stan_compile_response();
+::stan::serve::StanCompileResponse* StanMessage::mutable_stan_compile_response() {
+  
   if (stan_compile_response_ == NULL) {
-    stan_compile_response_ = new ::StanCompileResponse;
+    stan_compile_response_ = new ::stan::serve::StanCompileResponse;
   }
-  // @@protoc_insertion_point(field_mutable:StanMessage.stan_compile_response)
+  // @@protoc_insertion_point(field_mutable:stan.serve.StanMessage.stan_compile_response)
   return stan_compile_response_;
 }
-::StanCompileResponse* StanMessage::release_stan_compile_response() {
-  clear_has_stan_compile_response();
-  ::StanCompileResponse* temp = stan_compile_response_;
+::stan::serve::StanCompileResponse* StanMessage::release_stan_compile_response() {
+  
+  ::stan::serve::StanCompileResponse* temp = stan_compile_response_;
   stan_compile_response_ = NULL;
   return temp;
 }
-void StanMessage::set_allocated_stan_compile_response(::StanCompileResponse* stan_compile_response) {
+void StanMessage::set_allocated_stan_compile_response(::stan::serve::StanCompileResponse* stan_compile_response) {
   delete stan_compile_response_;
   stan_compile_response_ = stan_compile_response;
   if (stan_compile_response) {
-    set_has_stan_compile_response();
+    
   } else {
-    clear_has_stan_compile_response();
+    
   }
-  // @@protoc_insertion_point(field_set_allocated:StanMessage.stan_compile_response)
-}
-
-// optional .StanCompileCheck stan_compile_check = 4;
-bool StanMessage::has_stan_compile_check() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-void StanMessage::set_has_stan_compile_check() {
-  _has_bits_[0] |= 0x00000008u;
-}
-void StanMessage::clear_has_stan_compile_check() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-void StanMessage::clear_stan_compile_check() {
-  if (stan_compile_check_ != NULL) stan_compile_check_->::StanCompileCheck::Clear();
-  clear_has_stan_compile_check();
-}
-const ::StanCompileCheck& StanMessage::stan_compile_check() const {
-  // @@protoc_insertion_point(field_get:StanMessage.stan_compile_check)
-  return stan_compile_check_ != NULL ? *stan_compile_check_ : *default_instance_->stan_compile_check_;
-}
-::StanCompileCheck* StanMessage::mutable_stan_compile_check() {
-  set_has_stan_compile_check();
-  if (stan_compile_check_ == NULL) {
-    stan_compile_check_ = new ::StanCompileCheck;
-  }
-  // @@protoc_insertion_point(field_mutable:StanMessage.stan_compile_check)
-  return stan_compile_check_;
-}
-::StanCompileCheck* StanMessage::release_stan_compile_check() {
-  clear_has_stan_compile_check();
-  ::StanCompileCheck* temp = stan_compile_check_;
-  stan_compile_check_ = NULL;
-  return temp;
-}
-void StanMessage::set_allocated_stan_compile_check(::StanCompileCheck* stan_compile_check) {
-  delete stan_compile_check_;
-  stan_compile_check_ = stan_compile_check;
-  if (stan_compile_check) {
-    set_has_stan_compile_check();
-  } else {
-    clear_has_stan_compile_check();
-  }
-  // @@protoc_insertion_point(field_set_allocated:StanMessage.stan_compile_check)
+  // @@protoc_insertion_point(field_set_allocated:stan.serve.StanMessage.stan_compile_response)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -812,10 +633,11 @@ const int StanVersion::kStanStanHashFieldNumber;
 StanVersion::StanVersion()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:StanVersion)
+  // @@protoc_insertion_point(constructor:stan.serve.StanVersion)
 }
 
 void StanVersion::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
 }
 
 StanVersion::StanVersion(const StanVersion& from)
@@ -823,20 +645,20 @@ StanVersion::StanVersion(const StanVersion& from)
     _internal_metadata_(NULL) {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:StanVersion)
+  // @@protoc_insertion_point(copy_constructor:stan.serve.StanVersion)
 }
 
 void StanVersion::SharedCtor() {
+    _is_default_instance_ = false;
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   version_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   stan_math_hash_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   stan_stan_hash_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
 StanVersion::~StanVersion() {
-  // @@protoc_insertion_point(destructor:StanVersion)
+  // @@protoc_insertion_point(destructor:stan.serve.StanVersion)
   SharedDtor();
 }
 
@@ -874,42 +696,30 @@ StanVersion* StanVersion::New(::google::protobuf::Arena* arena) const {
 }
 
 void StanVersion::Clear() {
-  if (_has_bits_[0 / 32] & 7u) {
-    if (has_version()) {
-      version_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-    }
-    if (has_stan_math_hash()) {
-      stan_math_hash_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-    }
-    if (has_stan_stan_hash()) {
-      stan_stan_hash_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-    }
-  }
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  if (_internal_metadata_.have_unknown_fields()) {
-    mutable_unknown_fields()->Clear();
-  }
+  version_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  stan_math_hash_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  stan_stan_hash_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 bool StanVersion::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:StanVersion)
+  // @@protoc_insertion_point(parse_start:stan.serve.StanVersion)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required string version = 1;
+      // optional string version = 1;
       case 1: {
         if (tag == 10) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_version()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             this->version().data(), this->version().length(),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "StanVersion.version");
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "stan.serve.StanVersion.version"));
         } else {
           goto handle_unusual;
         }
@@ -923,10 +733,10 @@ bool StanVersion::MergePartialFromCodedStream(
          parse_stan_math_hash:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_stan_math_hash()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             this->stan_math_hash().data(), this->stan_math_hash().length(),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "StanVersion.stan_math_hash");
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "stan.serve.StanVersion.stan_math_hash"));
         } else {
           goto handle_unusual;
         }
@@ -940,10 +750,10 @@ bool StanVersion::MergePartialFromCodedStream(
          parse_stan_stan_hash:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_stan_stan_hash()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             this->stan_stan_hash().data(), this->stan_stan_hash().length(),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "StanVersion.stan_stan_hash");
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "stan.serve.StanVersion.stan_stan_hash"));
         } else {
           goto handle_unusual;
         }
@@ -958,135 +768,120 @@ bool StanVersion::MergePartialFromCodedStream(
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
         break;
       }
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:StanVersion)
+  // @@protoc_insertion_point(parse_success:stan.serve.StanVersion)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:StanVersion)
+  // @@protoc_insertion_point(parse_failure:stan.serve.StanVersion)
   return false;
 #undef DO_
 }
 
 void StanVersion::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:StanVersion)
-  // required string version = 1;
-  if (has_version()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+  // @@protoc_insertion_point(serialize_start:stan.serve.StanVersion)
+  // optional string version = 1;
+  if (this->version().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->version().data(), this->version().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "StanVersion.version");
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "stan.serve.StanVersion.version");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       1, this->version(), output);
   }
 
   // optional string stan_math_hash = 2;
-  if (has_stan_math_hash()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+  if (this->stan_math_hash().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->stan_math_hash().data(), this->stan_math_hash().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "StanVersion.stan_math_hash");
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "stan.serve.StanVersion.stan_math_hash");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       2, this->stan_math_hash(), output);
   }
 
   // optional string stan_stan_hash = 3;
-  if (has_stan_stan_hash()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+  if (this->stan_stan_hash().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->stan_stan_hash().data(), this->stan_stan_hash().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "StanVersion.stan_stan_hash");
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "stan.serve.StanVersion.stan_stan_hash");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       3, this->stan_stan_hash(), output);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:StanVersion)
+  // @@protoc_insertion_point(serialize_end:stan.serve.StanVersion)
 }
 
 ::google::protobuf::uint8* StanVersion::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:StanVersion)
-  // required string version = 1;
-  if (has_version()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+  // @@protoc_insertion_point(serialize_to_array_start:stan.serve.StanVersion)
+  // optional string version = 1;
+  if (this->version().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->version().data(), this->version().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "StanVersion.version");
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "stan.serve.StanVersion.version");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         1, this->version(), target);
   }
 
   // optional string stan_math_hash = 2;
-  if (has_stan_math_hash()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+  if (this->stan_math_hash().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->stan_math_hash().data(), this->stan_math_hash().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "StanVersion.stan_math_hash");
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "stan.serve.StanVersion.stan_math_hash");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         2, this->stan_math_hash(), target);
   }
 
   // optional string stan_stan_hash = 3;
-  if (has_stan_stan_hash()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+  if (this->stan_stan_hash().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->stan_stan_hash().data(), this->stan_stan_hash().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "StanVersion.stan_stan_hash");
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "stan.serve.StanVersion.stan_stan_hash");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         3, this->stan_stan_hash(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:StanVersion)
+  // @@protoc_insertion_point(serialize_to_array_end:stan.serve.StanVersion)
   return target;
 }
 
 int StanVersion::ByteSize() const {
   int total_size = 0;
 
-  // required string version = 1;
-  if (has_version()) {
+  // optional string version = 1;
+  if (this->version().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->version());
   }
-  if (_has_bits_[1 / 32] & 6u) {
-    // optional string stan_math_hash = 2;
-    if (has_stan_math_hash()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->stan_math_hash());
-    }
 
-    // optional string stan_stan_hash = 3;
-    if (has_stan_stan_hash()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->stan_stan_hash());
-    }
+  // optional string stan_math_hash = 2;
+  if (this->stan_math_hash().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->stan_math_hash());
+  }
 
+  // optional string stan_stan_hash = 3;
+  if (this->stan_stan_hash().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->stan_stan_hash());
   }
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
+
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = total_size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
@@ -1107,22 +902,17 @@ void StanVersion::MergeFrom(const ::google::protobuf::Message& from) {
 
 void StanVersion::MergeFrom(const StanVersion& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_version()) {
-      set_has_version();
-      version_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.version_);
-    }
-    if (from.has_stan_math_hash()) {
-      set_has_stan_math_hash();
-      stan_math_hash_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.stan_math_hash_);
-    }
-    if (from.has_stan_stan_hash()) {
-      set_has_stan_stan_hash();
-      stan_stan_hash_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.stan_stan_hash_);
-    }
+  if (from.version().size() > 0) {
+
+    version_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.version_);
   }
-  if (from._internal_metadata_.have_unknown_fields()) {
-    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  if (from.stan_math_hash().size() > 0) {
+
+    stan_math_hash_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.stan_math_hash_);
+  }
+  if (from.stan_stan_hash().size() > 0) {
+
+    stan_stan_hash_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.stan_stan_hash_);
   }
 }
 
@@ -1139,7 +929,6 @@ void StanVersion::CopyFrom(const StanVersion& from) {
 }
 
 bool StanVersion::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
   return true;
 }
@@ -1152,7 +941,6 @@ void StanVersion::InternalSwap(StanVersion* other) {
   version_.Swap(&other->version_);
   stan_math_hash_.Swap(&other->stan_math_hash_);
   stan_stan_hash_.Swap(&other->stan_stan_hash_);
-  std::swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
 }
@@ -1168,163 +956,133 @@ void StanVersion::InternalSwap(StanVersion* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // StanVersion
 
-// required string version = 1;
-bool StanVersion::has_version() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-void StanVersion::set_has_version() {
-  _has_bits_[0] |= 0x00000001u;
-}
-void StanVersion::clear_has_version() {
-  _has_bits_[0] &= ~0x00000001u;
-}
+// optional string version = 1;
 void StanVersion::clear_version() {
   version_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_version();
 }
  const ::std::string& StanVersion::version() const {
-  // @@protoc_insertion_point(field_get:StanVersion.version)
+  // @@protoc_insertion_point(field_get:stan.serve.StanVersion.version)
   return version_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
  void StanVersion::set_version(const ::std::string& value) {
-  set_has_version();
+  
   version_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:StanVersion.version)
+  // @@protoc_insertion_point(field_set:stan.serve.StanVersion.version)
 }
  void StanVersion::set_version(const char* value) {
-  set_has_version();
+  
   version_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:StanVersion.version)
+  // @@protoc_insertion_point(field_set_char:stan.serve.StanVersion.version)
 }
  void StanVersion::set_version(const char* value, size_t size) {
-  set_has_version();
+  
   version_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:StanVersion.version)
+  // @@protoc_insertion_point(field_set_pointer:stan.serve.StanVersion.version)
 }
  ::std::string* StanVersion::mutable_version() {
-  set_has_version();
-  // @@protoc_insertion_point(field_mutable:StanVersion.version)
+  
+  // @@protoc_insertion_point(field_mutable:stan.serve.StanVersion.version)
   return version_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
  ::std::string* StanVersion::release_version() {
-  clear_has_version();
+  
   return version_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
  void StanVersion::set_allocated_version(::std::string* version) {
   if (version != NULL) {
-    set_has_version();
+    
   } else {
-    clear_has_version();
+    
   }
   version_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), version);
-  // @@protoc_insertion_point(field_set_allocated:StanVersion.version)
+  // @@protoc_insertion_point(field_set_allocated:stan.serve.StanVersion.version)
 }
 
 // optional string stan_math_hash = 2;
-bool StanVersion::has_stan_math_hash() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-void StanVersion::set_has_stan_math_hash() {
-  _has_bits_[0] |= 0x00000002u;
-}
-void StanVersion::clear_has_stan_math_hash() {
-  _has_bits_[0] &= ~0x00000002u;
-}
 void StanVersion::clear_stan_math_hash() {
   stan_math_hash_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_stan_math_hash();
 }
  const ::std::string& StanVersion::stan_math_hash() const {
-  // @@protoc_insertion_point(field_get:StanVersion.stan_math_hash)
+  // @@protoc_insertion_point(field_get:stan.serve.StanVersion.stan_math_hash)
   return stan_math_hash_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
  void StanVersion::set_stan_math_hash(const ::std::string& value) {
-  set_has_stan_math_hash();
+  
   stan_math_hash_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:StanVersion.stan_math_hash)
+  // @@protoc_insertion_point(field_set:stan.serve.StanVersion.stan_math_hash)
 }
  void StanVersion::set_stan_math_hash(const char* value) {
-  set_has_stan_math_hash();
+  
   stan_math_hash_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:StanVersion.stan_math_hash)
+  // @@protoc_insertion_point(field_set_char:stan.serve.StanVersion.stan_math_hash)
 }
  void StanVersion::set_stan_math_hash(const char* value, size_t size) {
-  set_has_stan_math_hash();
+  
   stan_math_hash_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:StanVersion.stan_math_hash)
+  // @@protoc_insertion_point(field_set_pointer:stan.serve.StanVersion.stan_math_hash)
 }
  ::std::string* StanVersion::mutable_stan_math_hash() {
-  set_has_stan_math_hash();
-  // @@protoc_insertion_point(field_mutable:StanVersion.stan_math_hash)
+  
+  // @@protoc_insertion_point(field_mutable:stan.serve.StanVersion.stan_math_hash)
   return stan_math_hash_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
  ::std::string* StanVersion::release_stan_math_hash() {
-  clear_has_stan_math_hash();
+  
   return stan_math_hash_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
  void StanVersion::set_allocated_stan_math_hash(::std::string* stan_math_hash) {
   if (stan_math_hash != NULL) {
-    set_has_stan_math_hash();
+    
   } else {
-    clear_has_stan_math_hash();
+    
   }
   stan_math_hash_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), stan_math_hash);
-  // @@protoc_insertion_point(field_set_allocated:StanVersion.stan_math_hash)
+  // @@protoc_insertion_point(field_set_allocated:stan.serve.StanVersion.stan_math_hash)
 }
 
 // optional string stan_stan_hash = 3;
-bool StanVersion::has_stan_stan_hash() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-void StanVersion::set_has_stan_stan_hash() {
-  _has_bits_[0] |= 0x00000004u;
-}
-void StanVersion::clear_has_stan_stan_hash() {
-  _has_bits_[0] &= ~0x00000004u;
-}
 void StanVersion::clear_stan_stan_hash() {
   stan_stan_hash_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_stan_stan_hash();
 }
  const ::std::string& StanVersion::stan_stan_hash() const {
-  // @@protoc_insertion_point(field_get:StanVersion.stan_stan_hash)
+  // @@protoc_insertion_point(field_get:stan.serve.StanVersion.stan_stan_hash)
   return stan_stan_hash_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
  void StanVersion::set_stan_stan_hash(const ::std::string& value) {
-  set_has_stan_stan_hash();
+  
   stan_stan_hash_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:StanVersion.stan_stan_hash)
+  // @@protoc_insertion_point(field_set:stan.serve.StanVersion.stan_stan_hash)
 }
  void StanVersion::set_stan_stan_hash(const char* value) {
-  set_has_stan_stan_hash();
+  
   stan_stan_hash_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:StanVersion.stan_stan_hash)
+  // @@protoc_insertion_point(field_set_char:stan.serve.StanVersion.stan_stan_hash)
 }
  void StanVersion::set_stan_stan_hash(const char* value, size_t size) {
-  set_has_stan_stan_hash();
+  
   stan_stan_hash_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:StanVersion.stan_stan_hash)
+  // @@protoc_insertion_point(field_set_pointer:stan.serve.StanVersion.stan_stan_hash)
 }
  ::std::string* StanVersion::mutable_stan_stan_hash() {
-  set_has_stan_stan_hash();
-  // @@protoc_insertion_point(field_mutable:StanVersion.stan_stan_hash)
+  
+  // @@protoc_insertion_point(field_mutable:stan.serve.StanVersion.stan_stan_hash)
   return stan_stan_hash_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
  ::std::string* StanVersion::release_stan_stan_hash() {
-  clear_has_stan_stan_hash();
+  
   return stan_stan_hash_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
  void StanVersion::set_allocated_stan_stan_hash(::std::string* stan_stan_hash) {
   if (stan_stan_hash != NULL) {
-    set_has_stan_stan_hash();
+    
   } else {
-    clear_has_stan_stan_hash();
+    
   }
   stan_stan_hash_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), stan_stan_hash);
-  // @@protoc_insertion_point(field_set_allocated:StanVersion.stan_stan_hash)
+  // @@protoc_insertion_point(field_set_allocated:stan.serve.StanVersion.stan_stan_hash)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -1340,10 +1098,11 @@ const int StanCompileRequest::kModelFileNameFieldNumber;
 StanCompileRequest::StanCompileRequest()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:StanCompileRequest)
+  // @@protoc_insertion_point(constructor:stan.serve.StanCompileRequest)
 }
 
 void StanCompileRequest::InitAsDefaultInstance() {
+  _is_default_instance_ = true;
 }
 
 StanCompileRequest::StanCompileRequest(const StanCompileRequest& from)
@@ -1351,20 +1110,20 @@ StanCompileRequest::StanCompileRequest(const StanCompileRequest& from)
     _internal_metadata_(NULL) {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:StanCompileRequest)
+  // @@protoc_insertion_point(copy_constructor:stan.serve.StanCompileRequest)
 }
 
 void StanCompileRequest::SharedCtor() {
+    _is_default_instance_ = false;
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   model_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   model_code_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   model_file_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
 StanCompileRequest::~StanCompileRequest() {
-  // @@protoc_insertion_point(destructor:StanCompileRequest)
+  // @@protoc_insertion_point(destructor:stan.serve.StanCompileRequest)
   SharedDtor();
 }
 
@@ -1402,28 +1161,16 @@ StanCompileRequest* StanCompileRequest::New(::google::protobuf::Arena* arena) co
 }
 
 void StanCompileRequest::Clear() {
-  if (_has_bits_[0 / 32] & 7u) {
-    if (has_model_name()) {
-      model_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-    }
-    if (has_model_code()) {
-      model_code_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-    }
-    if (has_model_file_name()) {
-      model_file_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-    }
-  }
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  if (_internal_metadata_.have_unknown_fields()) {
-    mutable_unknown_fields()->Clear();
-  }
+  model_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  model_code_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  model_file_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 bool StanCompileRequest::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:StanCompileRequest)
+  // @@protoc_insertion_point(parse_start:stan.serve.StanCompileRequest)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
@@ -1434,10 +1181,10 @@ bool StanCompileRequest::MergePartialFromCodedStream(
         if (tag == 10) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_model_name()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             this->model_name().data(), this->model_name().length(),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "StanCompileRequest.model_name");
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "stan.serve.StanCompileRequest.model_name"));
         } else {
           goto handle_unusual;
         }
@@ -1445,16 +1192,16 @@ bool StanCompileRequest::MergePartialFromCodedStream(
         break;
       }
 
-      // required string model_code = 2;
+      // optional string model_code = 2;
       case 2: {
         if (tag == 18) {
          parse_model_code:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_model_code()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             this->model_code().data(), this->model_code().length(),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "StanCompileRequest.model_code");
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "stan.serve.StanCompileRequest.model_code"));
         } else {
           goto handle_unusual;
         }
@@ -1468,10 +1215,10 @@ bool StanCompileRequest::MergePartialFromCodedStream(
          parse_model_file_name:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_model_file_name()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             this->model_file_name().data(), this->model_file_name().length(),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "StanCompileRequest.model_file_name");
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "stan.serve.StanCompileRequest.model_file_name"));
         } else {
           goto handle_unusual;
         }
@@ -1486,135 +1233,120 @@ bool StanCompileRequest::MergePartialFromCodedStream(
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
         break;
       }
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:StanCompileRequest)
+  // @@protoc_insertion_point(parse_success:stan.serve.StanCompileRequest)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:StanCompileRequest)
+  // @@protoc_insertion_point(parse_failure:stan.serve.StanCompileRequest)
   return false;
 #undef DO_
 }
 
 void StanCompileRequest::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:StanCompileRequest)
+  // @@protoc_insertion_point(serialize_start:stan.serve.StanCompileRequest)
   // optional string model_name = 1;
-  if (has_model_name()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+  if (this->model_name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->model_name().data(), this->model_name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "StanCompileRequest.model_name");
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "stan.serve.StanCompileRequest.model_name");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       1, this->model_name(), output);
   }
 
-  // required string model_code = 2;
-  if (has_model_code()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+  // optional string model_code = 2;
+  if (this->model_code().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->model_code().data(), this->model_code().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "StanCompileRequest.model_code");
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "stan.serve.StanCompileRequest.model_code");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       2, this->model_code(), output);
   }
 
   // optional string model_file_name = 3;
-  if (has_model_file_name()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+  if (this->model_file_name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->model_file_name().data(), this->model_file_name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "StanCompileRequest.model_file_name");
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "stan.serve.StanCompileRequest.model_file_name");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       3, this->model_file_name(), output);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:StanCompileRequest)
+  // @@protoc_insertion_point(serialize_end:stan.serve.StanCompileRequest)
 }
 
 ::google::protobuf::uint8* StanCompileRequest::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:StanCompileRequest)
+  // @@protoc_insertion_point(serialize_to_array_start:stan.serve.StanCompileRequest)
   // optional string model_name = 1;
-  if (has_model_name()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+  if (this->model_name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->model_name().data(), this->model_name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "StanCompileRequest.model_name");
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "stan.serve.StanCompileRequest.model_name");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         1, this->model_name(), target);
   }
 
-  // required string model_code = 2;
-  if (has_model_code()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+  // optional string model_code = 2;
+  if (this->model_code().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->model_code().data(), this->model_code().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "StanCompileRequest.model_code");
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "stan.serve.StanCompileRequest.model_code");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         2, this->model_code(), target);
   }
 
   // optional string model_file_name = 3;
-  if (has_model_file_name()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+  if (this->model_file_name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->model_file_name().data(), this->model_file_name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "StanCompileRequest.model_file_name");
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "stan.serve.StanCompileRequest.model_file_name");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         3, this->model_file_name(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:StanCompileRequest)
+  // @@protoc_insertion_point(serialize_to_array_end:stan.serve.StanCompileRequest)
   return target;
 }
 
 int StanCompileRequest::ByteSize() const {
   int total_size = 0;
 
-  // required string model_code = 2;
-  if (has_model_code()) {
+  // optional string model_name = 1;
+  if (this->model_name().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->model_name());
+  }
+
+  // optional string model_code = 2;
+  if (this->model_code().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->model_code());
   }
-  if (_has_bits_[0 / 32] & 5u) {
-    // optional string model_name = 1;
-    if (has_model_name()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->model_name());
-    }
 
-    // optional string model_file_name = 3;
-    if (has_model_file_name()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->model_file_name());
-    }
+  // optional string model_file_name = 3;
+  if (this->model_file_name().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->model_file_name());
+  }
 
-  }
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = total_size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
@@ -1635,22 +1367,17 @@ void StanCompileRequest::MergeFrom(const ::google::protobuf::Message& from) {
 
 void StanCompileRequest::MergeFrom(const StanCompileRequest& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_model_name()) {
-      set_has_model_name();
-      model_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.model_name_);
-    }
-    if (from.has_model_code()) {
-      set_has_model_code();
-      model_code_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.model_code_);
-    }
-    if (from.has_model_file_name()) {
-      set_has_model_file_name();
-      model_file_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.model_file_name_);
-    }
+  if (from.model_name().size() > 0) {
+
+    model_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.model_name_);
   }
-  if (from._internal_metadata_.have_unknown_fields()) {
-    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  if (from.model_code().size() > 0) {
+
+    model_code_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.model_code_);
+  }
+  if (from.model_file_name().size() > 0) {
+
+    model_file_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.model_file_name_);
   }
 }
 
@@ -1667,7 +1394,6 @@ void StanCompileRequest::CopyFrom(const StanCompileRequest& from) {
 }
 
 bool StanCompileRequest::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000002) != 0x00000002) return false;
 
   return true;
 }
@@ -1680,7 +1406,6 @@ void StanCompileRequest::InternalSwap(StanCompileRequest* other) {
   model_name_.Swap(&other->model_name_);
   model_code_.Swap(&other->model_code_);
   model_file_name_.Swap(&other->model_file_name_);
-  std::swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
 }
@@ -1697,560 +1422,132 @@ void StanCompileRequest::InternalSwap(StanCompileRequest* other) {
 // StanCompileRequest
 
 // optional string model_name = 1;
-bool StanCompileRequest::has_model_name() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-void StanCompileRequest::set_has_model_name() {
-  _has_bits_[0] |= 0x00000001u;
-}
-void StanCompileRequest::clear_has_model_name() {
-  _has_bits_[0] &= ~0x00000001u;
-}
 void StanCompileRequest::clear_model_name() {
   model_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_model_name();
 }
  const ::std::string& StanCompileRequest::model_name() const {
-  // @@protoc_insertion_point(field_get:StanCompileRequest.model_name)
+  // @@protoc_insertion_point(field_get:stan.serve.StanCompileRequest.model_name)
   return model_name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
  void StanCompileRequest::set_model_name(const ::std::string& value) {
-  set_has_model_name();
+  
   model_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:StanCompileRequest.model_name)
+  // @@protoc_insertion_point(field_set:stan.serve.StanCompileRequest.model_name)
 }
  void StanCompileRequest::set_model_name(const char* value) {
-  set_has_model_name();
+  
   model_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:StanCompileRequest.model_name)
+  // @@protoc_insertion_point(field_set_char:stan.serve.StanCompileRequest.model_name)
 }
  void StanCompileRequest::set_model_name(const char* value, size_t size) {
-  set_has_model_name();
+  
   model_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:StanCompileRequest.model_name)
+  // @@protoc_insertion_point(field_set_pointer:stan.serve.StanCompileRequest.model_name)
 }
  ::std::string* StanCompileRequest::mutable_model_name() {
-  set_has_model_name();
-  // @@protoc_insertion_point(field_mutable:StanCompileRequest.model_name)
+  
+  // @@protoc_insertion_point(field_mutable:stan.serve.StanCompileRequest.model_name)
   return model_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
  ::std::string* StanCompileRequest::release_model_name() {
-  clear_has_model_name();
+  
   return model_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
  void StanCompileRequest::set_allocated_model_name(::std::string* model_name) {
   if (model_name != NULL) {
-    set_has_model_name();
+    
   } else {
-    clear_has_model_name();
+    
   }
   model_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), model_name);
-  // @@protoc_insertion_point(field_set_allocated:StanCompileRequest.model_name)
+  // @@protoc_insertion_point(field_set_allocated:stan.serve.StanCompileRequest.model_name)
 }
 
-// required string model_code = 2;
-bool StanCompileRequest::has_model_code() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-void StanCompileRequest::set_has_model_code() {
-  _has_bits_[0] |= 0x00000002u;
-}
-void StanCompileRequest::clear_has_model_code() {
-  _has_bits_[0] &= ~0x00000002u;
-}
+// optional string model_code = 2;
 void StanCompileRequest::clear_model_code() {
   model_code_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_model_code();
 }
  const ::std::string& StanCompileRequest::model_code() const {
-  // @@protoc_insertion_point(field_get:StanCompileRequest.model_code)
+  // @@protoc_insertion_point(field_get:stan.serve.StanCompileRequest.model_code)
   return model_code_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
  void StanCompileRequest::set_model_code(const ::std::string& value) {
-  set_has_model_code();
+  
   model_code_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:StanCompileRequest.model_code)
+  // @@protoc_insertion_point(field_set:stan.serve.StanCompileRequest.model_code)
 }
  void StanCompileRequest::set_model_code(const char* value) {
-  set_has_model_code();
+  
   model_code_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:StanCompileRequest.model_code)
+  // @@protoc_insertion_point(field_set_char:stan.serve.StanCompileRequest.model_code)
 }
  void StanCompileRequest::set_model_code(const char* value, size_t size) {
-  set_has_model_code();
+  
   model_code_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:StanCompileRequest.model_code)
+  // @@protoc_insertion_point(field_set_pointer:stan.serve.StanCompileRequest.model_code)
 }
  ::std::string* StanCompileRequest::mutable_model_code() {
-  set_has_model_code();
-  // @@protoc_insertion_point(field_mutable:StanCompileRequest.model_code)
+  
+  // @@protoc_insertion_point(field_mutable:stan.serve.StanCompileRequest.model_code)
   return model_code_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
  ::std::string* StanCompileRequest::release_model_code() {
-  clear_has_model_code();
+  
   return model_code_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
  void StanCompileRequest::set_allocated_model_code(::std::string* model_code) {
   if (model_code != NULL) {
-    set_has_model_code();
+    
   } else {
-    clear_has_model_code();
+    
   }
   model_code_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), model_code);
-  // @@protoc_insertion_point(field_set_allocated:StanCompileRequest.model_code)
+  // @@protoc_insertion_point(field_set_allocated:stan.serve.StanCompileRequest.model_code)
 }
 
 // optional string model_file_name = 3;
-bool StanCompileRequest::has_model_file_name() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-void StanCompileRequest::set_has_model_file_name() {
-  _has_bits_[0] |= 0x00000004u;
-}
-void StanCompileRequest::clear_has_model_file_name() {
-  _has_bits_[0] &= ~0x00000004u;
-}
 void StanCompileRequest::clear_model_file_name() {
   model_file_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_model_file_name();
 }
  const ::std::string& StanCompileRequest::model_file_name() const {
-  // @@protoc_insertion_point(field_get:StanCompileRequest.model_file_name)
+  // @@protoc_insertion_point(field_get:stan.serve.StanCompileRequest.model_file_name)
   return model_file_name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
  void StanCompileRequest::set_model_file_name(const ::std::string& value) {
-  set_has_model_file_name();
+  
   model_file_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:StanCompileRequest.model_file_name)
+  // @@protoc_insertion_point(field_set:stan.serve.StanCompileRequest.model_file_name)
 }
  void StanCompileRequest::set_model_file_name(const char* value) {
-  set_has_model_file_name();
+  
   model_file_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:StanCompileRequest.model_file_name)
+  // @@protoc_insertion_point(field_set_char:stan.serve.StanCompileRequest.model_file_name)
 }
  void StanCompileRequest::set_model_file_name(const char* value, size_t size) {
-  set_has_model_file_name();
+  
   model_file_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:StanCompileRequest.model_file_name)
+  // @@protoc_insertion_point(field_set_pointer:stan.serve.StanCompileRequest.model_file_name)
 }
  ::std::string* StanCompileRequest::mutable_model_file_name() {
-  set_has_model_file_name();
-  // @@protoc_insertion_point(field_mutable:StanCompileRequest.model_file_name)
+  
+  // @@protoc_insertion_point(field_mutable:stan.serve.StanCompileRequest.model_file_name)
   return model_file_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
  ::std::string* StanCompileRequest::release_model_file_name() {
-  clear_has_model_file_name();
+  
   return model_file_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
  void StanCompileRequest::set_allocated_model_file_name(::std::string* model_file_name) {
   if (model_file_name != NULL) {
-    set_has_model_file_name();
+    
   } else {
-    clear_has_model_file_name();
+    
   }
   model_file_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), model_file_name);
-  // @@protoc_insertion_point(field_set_allocated:StanCompileRequest.model_file_name)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
-
-// ===================================================================
-
-#ifndef _MSC_VER
-const int StanCompileCheck::kHashFieldNumber;
-const int StanCompileCheck::kStanVersionFieldNumber;
-#endif  // !_MSC_VER
-
-StanCompileCheck::StanCompileCheck()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:StanCompileCheck)
-}
-
-void StanCompileCheck::InitAsDefaultInstance() {
-  stan_version_ = const_cast< ::StanVersion*>(&::StanVersion::default_instance());
-}
-
-StanCompileCheck::StanCompileCheck(const StanCompileCheck& from)
-  : ::google::protobuf::Message(),
-    _internal_metadata_(NULL) {
-  SharedCtor();
-  MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:StanCompileCheck)
-}
-
-void StanCompileCheck::SharedCtor() {
-  ::google::protobuf::internal::GetEmptyString();
-  _cached_size_ = 0;
-  hash_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  stan_version_ = NULL;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-StanCompileCheck::~StanCompileCheck() {
-  // @@protoc_insertion_point(destructor:StanCompileCheck)
-  SharedDtor();
-}
-
-void StanCompileCheck::SharedDtor() {
-  hash_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (this != default_instance_) {
-    delete stan_version_;
-  }
-}
-
-void StanCompileCheck::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* StanCompileCheck::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return StanCompileCheck_descriptor_;
-}
-
-const StanCompileCheck& StanCompileCheck::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fstanc_2eproto();
-  return *default_instance_;
-}
-
-StanCompileCheck* StanCompileCheck::default_instance_ = NULL;
-
-StanCompileCheck* StanCompileCheck::New(::google::protobuf::Arena* arena) const {
-  StanCompileCheck* n = new StanCompileCheck;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
-
-void StanCompileCheck::Clear() {
-  if (_has_bits_[0 / 32] & 3u) {
-    if (has_hash()) {
-      hash_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-    }
-    if (has_stan_version()) {
-      if (stan_version_ != NULL) stan_version_->::StanVersion::Clear();
-    }
-  }
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  if (_internal_metadata_.have_unknown_fields()) {
-    mutable_unknown_fields()->Clear();
-  }
-}
-
-bool StanCompileCheck::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:StanCompileCheck)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required string hash = 1;
-      case 1: {
-        if (tag == 10) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_hash()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-            this->hash().data(), this->hash().length(),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "StanCompileCheck.hash");
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(18)) goto parse_stan_version;
-        break;
-      }
-
-      // optional .StanVersion stan_version = 2;
-      case 2: {
-        if (tag == 18) {
-         parse_stan_version:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_stan_version()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectAtEnd()) goto success;
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0 ||
-            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:StanCompileCheck)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:StanCompileCheck)
-  return false;
-#undef DO_
-}
-
-void StanCompileCheck::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:StanCompileCheck)
-  // required string hash = 1;
-  if (has_hash()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->hash().data(), this->hash().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "StanCompileCheck.hash");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->hash(), output);
-  }
-
-  // optional .StanVersion stan_version = 2;
-  if (has_stan_version()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, *this->stan_version_, output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:StanCompileCheck)
-}
-
-::google::protobuf::uint8* StanCompileCheck::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:StanCompileCheck)
-  // required string hash = 1;
-  if (has_hash()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->hash().data(), this->hash().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "StanCompileCheck.hash");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->hash(), target);
-  }
-
-  // optional .StanVersion stan_version = 2;
-  if (has_stan_version()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        2, *this->stan_version_, target);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:StanCompileCheck)
-  return target;
-}
-
-int StanCompileCheck::ByteSize() const {
-  int total_size = 0;
-
-  // required string hash = 1;
-  if (has_hash()) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->hash());
-  }
-  // optional .StanVersion stan_version = 2;
-  if (has_stan_version()) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        *this->stan_version_);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void StanCompileCheck::MergeFrom(const ::google::protobuf::Message& from) {
-  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  const StanCompileCheck* source = 
-      ::google::protobuf::internal::DynamicCastToGenerated<const StanCompileCheck>(
-          &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void StanCompileCheck::MergeFrom(const StanCompileCheck& from) {
-  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_hash()) {
-      set_has_hash();
-      hash_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.hash_);
-    }
-    if (from.has_stan_version()) {
-      mutable_stan_version()->::StanVersion::MergeFrom(from.stan_version());
-    }
-  }
-  if (from._internal_metadata_.have_unknown_fields()) {
-    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-  }
-}
-
-void StanCompileCheck::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void StanCompileCheck::CopyFrom(const StanCompileCheck& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool StanCompileCheck::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
-
-  if (has_stan_version()) {
-    if (!this->stan_version_->IsInitialized()) return false;
-  }
-  return true;
-}
-
-void StanCompileCheck::Swap(StanCompileCheck* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void StanCompileCheck::InternalSwap(StanCompileCheck* other) {
-  hash_.Swap(&other->hash_);
-  std::swap(stan_version_, other->stan_version_);
-  std::swap(_has_bits_[0], other->_has_bits_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  std::swap(_cached_size_, other->_cached_size_);
-}
-
-::google::protobuf::Metadata StanCompileCheck::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = StanCompileCheck_descriptor_;
-  metadata.reflection = StanCompileCheck_reflection_;
-  return metadata;
-}
-
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// StanCompileCheck
-
-// required string hash = 1;
-bool StanCompileCheck::has_hash() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-void StanCompileCheck::set_has_hash() {
-  _has_bits_[0] |= 0x00000001u;
-}
-void StanCompileCheck::clear_has_hash() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-void StanCompileCheck::clear_hash() {
-  hash_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_hash();
-}
- const ::std::string& StanCompileCheck::hash() const {
-  // @@protoc_insertion_point(field_get:StanCompileCheck.hash)
-  return hash_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void StanCompileCheck::set_hash(const ::std::string& value) {
-  set_has_hash();
-  hash_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:StanCompileCheck.hash)
-}
- void StanCompileCheck::set_hash(const char* value) {
-  set_has_hash();
-  hash_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:StanCompileCheck.hash)
-}
- void StanCompileCheck::set_hash(const char* value, size_t size) {
-  set_has_hash();
-  hash_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:StanCompileCheck.hash)
-}
- ::std::string* StanCompileCheck::mutable_hash() {
-  set_has_hash();
-  // @@protoc_insertion_point(field_mutable:StanCompileCheck.hash)
-  return hash_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- ::std::string* StanCompileCheck::release_hash() {
-  clear_has_hash();
-  return hash_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void StanCompileCheck::set_allocated_hash(::std::string* hash) {
-  if (hash != NULL) {
-    set_has_hash();
-  } else {
-    clear_has_hash();
-  }
-  hash_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), hash);
-  // @@protoc_insertion_point(field_set_allocated:StanCompileCheck.hash)
-}
-
-// optional .StanVersion stan_version = 2;
-bool StanCompileCheck::has_stan_version() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-void StanCompileCheck::set_has_stan_version() {
-  _has_bits_[0] |= 0x00000002u;
-}
-void StanCompileCheck::clear_has_stan_version() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-void StanCompileCheck::clear_stan_version() {
-  if (stan_version_ != NULL) stan_version_->::StanVersion::Clear();
-  clear_has_stan_version();
-}
-const ::StanVersion& StanCompileCheck::stan_version() const {
-  // @@protoc_insertion_point(field_get:StanCompileCheck.stan_version)
-  return stan_version_ != NULL ? *stan_version_ : *default_instance_->stan_version_;
-}
-::StanVersion* StanCompileCheck::mutable_stan_version() {
-  set_has_stan_version();
-  if (stan_version_ == NULL) {
-    stan_version_ = new ::StanVersion;
-  }
-  // @@protoc_insertion_point(field_mutable:StanCompileCheck.stan_version)
-  return stan_version_;
-}
-::StanVersion* StanCompileCheck::release_stan_version() {
-  clear_has_stan_version();
-  ::StanVersion* temp = stan_version_;
-  stan_version_ = NULL;
-  return temp;
-}
-void StanCompileCheck::set_allocated_stan_version(::StanVersion* stan_version) {
-  delete stan_version_;
-  stan_version_ = stan_version;
-  if (stan_version) {
-    set_has_stan_version();
-  } else {
-    clear_has_stan_version();
-  }
-  // @@protoc_insertion_point(field_set_allocated:StanCompileCheck.stan_version)
+  // @@protoc_insertion_point(field_set_allocated:stan.serve.StanCompileRequest.model_file_name)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -2267,6 +1564,7 @@ bool StanCompileResponse_State_IsValid(int value) {
     case 1:
     case 2:
     case 3:
+    case 4:
       return true;
     default:
       return false;
@@ -2274,30 +1572,29 @@ bool StanCompileResponse_State_IsValid(int value) {
 }
 
 #ifndef _MSC_VER
-const StanCompileResponse_State StanCompileResponse::COMPILE_INCOMPLETE;
-const StanCompileResponse_State StanCompileResponse::COMPILE_SUCCESS;
-const StanCompileResponse_State StanCompileResponse::COMPILE_WARN;
-const StanCompileResponse_State StanCompileResponse::COMPILE_ERROR;
+const StanCompileResponse_State StanCompileResponse::UNKNOWN;
+const StanCompileResponse_State StanCompileResponse::INCOMPLETE;
+const StanCompileResponse_State StanCompileResponse::SUCCESS;
+const StanCompileResponse_State StanCompileResponse::WARN;
+const StanCompileResponse_State StanCompileResponse::ERROR;
 const StanCompileResponse_State StanCompileResponse::State_MIN;
 const StanCompileResponse_State StanCompileResponse::State_MAX;
 const int StanCompileResponse::State_ARRAYSIZE;
 #endif  // _MSC_VER
 #ifndef _MSC_VER
-const int StanCompileResponse::kHashFieldNumber;
 const int StanCompileResponse::kStateFieldNumber;
 const int StanCompileResponse::kCppCodeFieldNumber;
 const int StanCompileResponse::kMessagesFieldNumber;
-const int StanCompileResponse::kStanVersionFieldNumber;
 #endif  // !_MSC_VER
 
 StanCompileResponse::StanCompileResponse()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:StanCompileResponse)
+  // @@protoc_insertion_point(constructor:stan.serve.StanCompileResponse)
 }
 
 void StanCompileResponse::InitAsDefaultInstance() {
-  stan_version_ = const_cast< ::StanVersion*>(&::StanVersion::default_instance());
+  _is_default_instance_ = true;
 }
 
 StanCompileResponse::StanCompileResponse(const StanCompileResponse& from)
@@ -2305,31 +1602,27 @@ StanCompileResponse::StanCompileResponse(const StanCompileResponse& from)
     _internal_metadata_(NULL) {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:StanCompileResponse)
+  // @@protoc_insertion_point(copy_constructor:stan.serve.StanCompileResponse)
 }
 
 void StanCompileResponse::SharedCtor() {
+    _is_default_instance_ = false;
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  hash_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   state_ = 0;
   cpp_code_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   messages_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  stan_version_ = NULL;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
 StanCompileResponse::~StanCompileResponse() {
-  // @@protoc_insertion_point(destructor:StanCompileResponse)
+  // @@protoc_insertion_point(destructor:stan.serve.StanCompileResponse)
   SharedDtor();
 }
 
 void StanCompileResponse::SharedDtor() {
-  hash_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   cpp_code_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   messages_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != default_instance_) {
-    delete stan_version_;
   }
 }
 
@@ -2359,66 +1652,29 @@ StanCompileResponse* StanCompileResponse::New(::google::protobuf::Arena* arena) 
 }
 
 void StanCompileResponse::Clear() {
-  if (_has_bits_[0 / 32] & 31u) {
-    if (has_hash()) {
-      hash_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-    }
-    state_ = 0;
-    if (has_cpp_code()) {
-      cpp_code_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-    }
-    if (has_messages()) {
-      messages_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-    }
-    if (has_stan_version()) {
-      if (stan_version_ != NULL) stan_version_->::StanVersion::Clear();
-    }
-  }
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  if (_internal_metadata_.have_unknown_fields()) {
-    mutable_unknown_fields()->Clear();
-  }
+  state_ = 0;
+  cpp_code_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  messages_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 bool StanCompileResponse::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:StanCompileResponse)
+  // @@protoc_insertion_point(parse_start:stan.serve.StanCompileResponse)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required string hash = 1;
-      case 1: {
-        if (tag == 10) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_hash()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-            this->hash().data(), this->hash().length(),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "StanCompileResponse.hash");
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(16)) goto parse_state;
-        break;
-      }
-
-      // required .StanCompileResponse.State state = 2;
+      // optional .stan.serve.StanCompileResponse.State state = 2;
       case 2: {
         if (tag == 16) {
-         parse_state:
           int value;
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          if (::StanCompileResponse_State_IsValid(value)) {
-            set_state(static_cast< ::StanCompileResponse_State >(value));
-          } else {
-            mutable_unknown_fields()->AddVarint(2, value);
-          }
+          set_state(static_cast< ::stan::serve::StanCompileResponse_State >(value));
         } else {
           goto handle_unusual;
         }
@@ -2432,10 +1688,10 @@ bool StanCompileResponse::MergePartialFromCodedStream(
          parse_cpp_code:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_cpp_code()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             this->cpp_code().data(), this->cpp_code().length(),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "StanCompileResponse.cpp_code");
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "stan.serve.StanCompileResponse.cpp_code"));
         } else {
           goto handle_unusual;
         }
@@ -2449,23 +1705,10 @@ bool StanCompileResponse::MergePartialFromCodedStream(
          parse_messages:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_messages()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             this->messages().data(), this->messages().length(),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "StanCompileResponse.messages");
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(42)) goto parse_stan_version;
-        break;
-      }
-
-      // required .StanVersion stan_version = 5;
-      case 5: {
-        if (tag == 42) {
-         parse_stan_version:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_stan_version()));
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "stan.serve.StanCompileResponse.messages"));
         } else {
           goto handle_unusual;
         }
@@ -2480,197 +1723,110 @@ bool StanCompileResponse::MergePartialFromCodedStream(
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
         break;
       }
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:StanCompileResponse)
+  // @@protoc_insertion_point(parse_success:stan.serve.StanCompileResponse)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:StanCompileResponse)
+  // @@protoc_insertion_point(parse_failure:stan.serve.StanCompileResponse)
   return false;
 #undef DO_
 }
 
 void StanCompileResponse::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:StanCompileResponse)
-  // required string hash = 1;
-  if (has_hash()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->hash().data(), this->hash().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "StanCompileResponse.hash");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->hash(), output);
-  }
-
-  // required .StanCompileResponse.State state = 2;
-  if (has_state()) {
+  // @@protoc_insertion_point(serialize_start:stan.serve.StanCompileResponse)
+  // optional .stan.serve.StanCompileResponse.State state = 2;
+  if (this->state() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       2, this->state(), output);
   }
 
   // optional string cpp_code = 3;
-  if (has_cpp_code()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+  if (this->cpp_code().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->cpp_code().data(), this->cpp_code().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "StanCompileResponse.cpp_code");
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "stan.serve.StanCompileResponse.cpp_code");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       3, this->cpp_code(), output);
   }
 
   // optional string messages = 4;
-  if (has_messages()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+  if (this->messages().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->messages().data(), this->messages().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "StanCompileResponse.messages");
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "stan.serve.StanCompileResponse.messages");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       4, this->messages(), output);
   }
 
-  // required .StanVersion stan_version = 5;
-  if (has_stan_version()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      5, *this->stan_version_, output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:StanCompileResponse)
+  // @@protoc_insertion_point(serialize_end:stan.serve.StanCompileResponse)
 }
 
 ::google::protobuf::uint8* StanCompileResponse::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:StanCompileResponse)
-  // required string hash = 1;
-  if (has_hash()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->hash().data(), this->hash().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "StanCompileResponse.hash");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->hash(), target);
-  }
-
-  // required .StanCompileResponse.State state = 2;
-  if (has_state()) {
+  // @@protoc_insertion_point(serialize_to_array_start:stan.serve.StanCompileResponse)
+  // optional .stan.serve.StanCompileResponse.State state = 2;
+  if (this->state() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       2, this->state(), target);
   }
 
   // optional string cpp_code = 3;
-  if (has_cpp_code()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+  if (this->cpp_code().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->cpp_code().data(), this->cpp_code().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "StanCompileResponse.cpp_code");
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "stan.serve.StanCompileResponse.cpp_code");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         3, this->cpp_code(), target);
   }
 
   // optional string messages = 4;
-  if (has_messages()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+  if (this->messages().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->messages().data(), this->messages().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "StanCompileResponse.messages");
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "stan.serve.StanCompileResponse.messages");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         4, this->messages(), target);
   }
 
-  // required .StanVersion stan_version = 5;
-  if (has_stan_version()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        5, *this->stan_version_, target);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:StanCompileResponse)
+  // @@protoc_insertion_point(serialize_to_array_end:stan.serve.StanCompileResponse)
   return target;
 }
 
-int StanCompileResponse::RequiredFieldsByteSizeFallback() const {
-  int total_size = 0;
-
-  if (has_hash()) {
-    // required string hash = 1;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->hash());
-  }
-
-  if (has_state()) {
-    // required .StanCompileResponse.State state = 2;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->state());
-  }
-
-  if (has_stan_version()) {
-    // required .StanVersion stan_version = 5;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        *this->stan_version_);
-  }
-
-  return total_size;
-}
 int StanCompileResponse::ByteSize() const {
   int total_size = 0;
 
-  if (((_has_bits_[0] & 0x00000013) ^ 0x00000013) == 0) {  // All required fields are present.
-    // required string hash = 1;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->hash());
-
-    // required .StanCompileResponse.State state = 2;
+  // optional .stan.serve.StanCompileResponse.State state = 2;
+  if (this->state() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->state());
+  }
 
-    // required .StanVersion stan_version = 5;
+  // optional string cpp_code = 3;
+  if (this->cpp_code().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        *this->stan_version_);
-
-  } else {
-    total_size += RequiredFieldsByteSizeFallback();
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->cpp_code());
   }
-  if (_has_bits_[2 / 32] & 12u) {
-    // optional string cpp_code = 3;
-    if (has_cpp_code()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->cpp_code());
-    }
 
-    // optional string messages = 4;
-    if (has_messages()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->messages());
-    }
+  // optional string messages = 4;
+  if (this->messages().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->messages());
+  }
 
-  }
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = total_size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
@@ -2691,28 +1847,16 @@ void StanCompileResponse::MergeFrom(const ::google::protobuf::Message& from) {
 
 void StanCompileResponse::MergeFrom(const StanCompileResponse& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_hash()) {
-      set_has_hash();
-      hash_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.hash_);
-    }
-    if (from.has_state()) {
-      set_state(from.state());
-    }
-    if (from.has_cpp_code()) {
-      set_has_cpp_code();
-      cpp_code_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.cpp_code_);
-    }
-    if (from.has_messages()) {
-      set_has_messages();
-      messages_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.messages_);
-    }
-    if (from.has_stan_version()) {
-      mutable_stan_version()->::StanVersion::MergeFrom(from.stan_version());
-    }
+  if (from.state() != 0) {
+    set_state(from.state());
   }
-  if (from._internal_metadata_.have_unknown_fields()) {
-    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  if (from.cpp_code().size() > 0) {
+
+    cpp_code_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.cpp_code_);
+  }
+  if (from.messages().size() > 0) {
+
+    messages_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.messages_);
   }
 }
 
@@ -2729,11 +1873,7 @@ void StanCompileResponse::CopyFrom(const StanCompileResponse& from) {
 }
 
 bool StanCompileResponse::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000013) != 0x00000013) return false;
 
-  if (has_stan_version()) {
-    if (!this->stan_version_->IsInitialized()) return false;
-  }
   return true;
 }
 
@@ -2742,12 +1882,9 @@ void StanCompileResponse::Swap(StanCompileResponse* other) {
   InternalSwap(other);
 }
 void StanCompileResponse::InternalSwap(StanCompileResponse* other) {
-  hash_.Swap(&other->hash_);
   std::swap(state_, other->state_);
   cpp_code_.Swap(&other->cpp_code_);
   messages_.Swap(&other->messages_);
-  std::swap(stan_version_, other->stan_version_);
-  std::swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
 }
@@ -2763,235 +1900,111 @@ void StanCompileResponse::InternalSwap(StanCompileResponse* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // StanCompileResponse
 
-// required string hash = 1;
-bool StanCompileResponse::has_hash() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-void StanCompileResponse::set_has_hash() {
-  _has_bits_[0] |= 0x00000001u;
-}
-void StanCompileResponse::clear_has_hash() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-void StanCompileResponse::clear_hash() {
-  hash_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_hash();
-}
- const ::std::string& StanCompileResponse::hash() const {
-  // @@protoc_insertion_point(field_get:StanCompileResponse.hash)
-  return hash_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void StanCompileResponse::set_hash(const ::std::string& value) {
-  set_has_hash();
-  hash_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:StanCompileResponse.hash)
-}
- void StanCompileResponse::set_hash(const char* value) {
-  set_has_hash();
-  hash_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:StanCompileResponse.hash)
-}
- void StanCompileResponse::set_hash(const char* value, size_t size) {
-  set_has_hash();
-  hash_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:StanCompileResponse.hash)
-}
- ::std::string* StanCompileResponse::mutable_hash() {
-  set_has_hash();
-  // @@protoc_insertion_point(field_mutable:StanCompileResponse.hash)
-  return hash_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- ::std::string* StanCompileResponse::release_hash() {
-  clear_has_hash();
-  return hash_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void StanCompileResponse::set_allocated_hash(::std::string* hash) {
-  if (hash != NULL) {
-    set_has_hash();
-  } else {
-    clear_has_hash();
-  }
-  hash_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), hash);
-  // @@protoc_insertion_point(field_set_allocated:StanCompileResponse.hash)
-}
-
-// required .StanCompileResponse.State state = 2;
-bool StanCompileResponse::has_state() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-void StanCompileResponse::set_has_state() {
-  _has_bits_[0] |= 0x00000002u;
-}
-void StanCompileResponse::clear_has_state() {
-  _has_bits_[0] &= ~0x00000002u;
-}
+// optional .stan.serve.StanCompileResponse.State state = 2;
 void StanCompileResponse::clear_state() {
   state_ = 0;
-  clear_has_state();
 }
- ::StanCompileResponse_State StanCompileResponse::state() const {
-  // @@protoc_insertion_point(field_get:StanCompileResponse.state)
-  return static_cast< ::StanCompileResponse_State >(state_);
+ ::stan::serve::StanCompileResponse_State StanCompileResponse::state() const {
+  // @@protoc_insertion_point(field_get:stan.serve.StanCompileResponse.state)
+  return static_cast< ::stan::serve::StanCompileResponse_State >(state_);
 }
- void StanCompileResponse::set_state(::StanCompileResponse_State value) {
-  assert(::StanCompileResponse_State_IsValid(value));
-  set_has_state();
+ void StanCompileResponse::set_state(::stan::serve::StanCompileResponse_State value) {
+  
   state_ = value;
-  // @@protoc_insertion_point(field_set:StanCompileResponse.state)
+  // @@protoc_insertion_point(field_set:stan.serve.StanCompileResponse.state)
 }
 
 // optional string cpp_code = 3;
-bool StanCompileResponse::has_cpp_code() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-void StanCompileResponse::set_has_cpp_code() {
-  _has_bits_[0] |= 0x00000004u;
-}
-void StanCompileResponse::clear_has_cpp_code() {
-  _has_bits_[0] &= ~0x00000004u;
-}
 void StanCompileResponse::clear_cpp_code() {
   cpp_code_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_cpp_code();
 }
  const ::std::string& StanCompileResponse::cpp_code() const {
-  // @@protoc_insertion_point(field_get:StanCompileResponse.cpp_code)
+  // @@protoc_insertion_point(field_get:stan.serve.StanCompileResponse.cpp_code)
   return cpp_code_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
  void StanCompileResponse::set_cpp_code(const ::std::string& value) {
-  set_has_cpp_code();
+  
   cpp_code_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:StanCompileResponse.cpp_code)
+  // @@protoc_insertion_point(field_set:stan.serve.StanCompileResponse.cpp_code)
 }
  void StanCompileResponse::set_cpp_code(const char* value) {
-  set_has_cpp_code();
+  
   cpp_code_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:StanCompileResponse.cpp_code)
+  // @@protoc_insertion_point(field_set_char:stan.serve.StanCompileResponse.cpp_code)
 }
  void StanCompileResponse::set_cpp_code(const char* value, size_t size) {
-  set_has_cpp_code();
+  
   cpp_code_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:StanCompileResponse.cpp_code)
+  // @@protoc_insertion_point(field_set_pointer:stan.serve.StanCompileResponse.cpp_code)
 }
  ::std::string* StanCompileResponse::mutable_cpp_code() {
-  set_has_cpp_code();
-  // @@protoc_insertion_point(field_mutable:StanCompileResponse.cpp_code)
+  
+  // @@protoc_insertion_point(field_mutable:stan.serve.StanCompileResponse.cpp_code)
   return cpp_code_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
  ::std::string* StanCompileResponse::release_cpp_code() {
-  clear_has_cpp_code();
+  
   return cpp_code_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
  void StanCompileResponse::set_allocated_cpp_code(::std::string* cpp_code) {
   if (cpp_code != NULL) {
-    set_has_cpp_code();
+    
   } else {
-    clear_has_cpp_code();
+    
   }
   cpp_code_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), cpp_code);
-  // @@protoc_insertion_point(field_set_allocated:StanCompileResponse.cpp_code)
+  // @@protoc_insertion_point(field_set_allocated:stan.serve.StanCompileResponse.cpp_code)
 }
 
 // optional string messages = 4;
-bool StanCompileResponse::has_messages() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-void StanCompileResponse::set_has_messages() {
-  _has_bits_[0] |= 0x00000008u;
-}
-void StanCompileResponse::clear_has_messages() {
-  _has_bits_[0] &= ~0x00000008u;
-}
 void StanCompileResponse::clear_messages() {
   messages_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_messages();
 }
  const ::std::string& StanCompileResponse::messages() const {
-  // @@protoc_insertion_point(field_get:StanCompileResponse.messages)
+  // @@protoc_insertion_point(field_get:stan.serve.StanCompileResponse.messages)
   return messages_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
  void StanCompileResponse::set_messages(const ::std::string& value) {
-  set_has_messages();
+  
   messages_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:StanCompileResponse.messages)
+  // @@protoc_insertion_point(field_set:stan.serve.StanCompileResponse.messages)
 }
  void StanCompileResponse::set_messages(const char* value) {
-  set_has_messages();
+  
   messages_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:StanCompileResponse.messages)
+  // @@protoc_insertion_point(field_set_char:stan.serve.StanCompileResponse.messages)
 }
  void StanCompileResponse::set_messages(const char* value, size_t size) {
-  set_has_messages();
+  
   messages_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:StanCompileResponse.messages)
+  // @@protoc_insertion_point(field_set_pointer:stan.serve.StanCompileResponse.messages)
 }
  ::std::string* StanCompileResponse::mutable_messages() {
-  set_has_messages();
-  // @@protoc_insertion_point(field_mutable:StanCompileResponse.messages)
+  
+  // @@protoc_insertion_point(field_mutable:stan.serve.StanCompileResponse.messages)
   return messages_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
  ::std::string* StanCompileResponse::release_messages() {
-  clear_has_messages();
+  
   return messages_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
  void StanCompileResponse::set_allocated_messages(::std::string* messages) {
   if (messages != NULL) {
-    set_has_messages();
+    
   } else {
-    clear_has_messages();
+    
   }
   messages_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), messages);
-  // @@protoc_insertion_point(field_set_allocated:StanCompileResponse.messages)
-}
-
-// required .StanVersion stan_version = 5;
-bool StanCompileResponse::has_stan_version() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
-}
-void StanCompileResponse::set_has_stan_version() {
-  _has_bits_[0] |= 0x00000010u;
-}
-void StanCompileResponse::clear_has_stan_version() {
-  _has_bits_[0] &= ~0x00000010u;
-}
-void StanCompileResponse::clear_stan_version() {
-  if (stan_version_ != NULL) stan_version_->::StanVersion::Clear();
-  clear_has_stan_version();
-}
-const ::StanVersion& StanCompileResponse::stan_version() const {
-  // @@protoc_insertion_point(field_get:StanCompileResponse.stan_version)
-  return stan_version_ != NULL ? *stan_version_ : *default_instance_->stan_version_;
-}
-::StanVersion* StanCompileResponse::mutable_stan_version() {
-  set_has_stan_version();
-  if (stan_version_ == NULL) {
-    stan_version_ = new ::StanVersion;
-  }
-  // @@protoc_insertion_point(field_mutable:StanCompileResponse.stan_version)
-  return stan_version_;
-}
-::StanVersion* StanCompileResponse::release_stan_version() {
-  clear_has_stan_version();
-  ::StanVersion* temp = stan_version_;
-  stan_version_ = NULL;
-  return temp;
-}
-void StanCompileResponse::set_allocated_stan_version(::StanVersion* stan_version) {
-  delete stan_version_;
-  stan_version_ = stan_version;
-  if (stan_version) {
-    set_has_stan_version();
-  } else {
-    clear_has_stan_version();
-  }
-  // @@protoc_insertion_point(field_set_allocated:StanCompileResponse.stan_version)
+  // @@protoc_insertion_point(field_set_allocated:stan.serve.StanCompileResponse.messages)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // @@protoc_insertion_point(namespace_scope)
+
+}  // namespace serve
+}  // namespace stan
 
 // @@protoc_insertion_point(global_scope)

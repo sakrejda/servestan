@@ -30,26 +30,31 @@
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 
+namespace stan {
+namespace serve {
+
 // Internal implementation detail -- do not call these.
 void protobuf_AddDesc_proto_2fstanc_2eproto();
 void protobuf_AssignDesc_proto_2fstanc_2eproto();
 void protobuf_ShutdownFile_proto_2fstanc_2eproto();
 
-class StanCompileCheck;
 class StanCompileRequest;
 class StanCompileResponse;
 class StanMessage;
 class StanVersion;
 
 enum StanMessage_Type {
-  StanMessage_Type_STAN_EMPTY = 0,
-  StanMessage_Type_STAN_COMPILE_REQUEST = 1,
-  StanMessage_Type_STAN_COMPILE_RESPONSE = 2,
-  StanMessage_Type_STAN_COMPILE_CHECK = 3
+  StanMessage_Type_UNKNOWN = 0,
+  StanMessage_Type_EMPTY = 1,
+  StanMessage_Type_COMPILE_REQUEST = 2,
+  StanMessage_Type_COMPILE_RESPONSE = 3,
+  StanMessage_Type_COMPILE_CHECK = 4,
+  StanMessage_Type_StanMessage_Type_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  StanMessage_Type_StanMessage_Type_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool StanMessage_Type_IsValid(int value);
-const StanMessage_Type StanMessage_Type_Type_MIN = StanMessage_Type_STAN_EMPTY;
-const StanMessage_Type StanMessage_Type_Type_MAX = StanMessage_Type_STAN_COMPILE_CHECK;
+const StanMessage_Type StanMessage_Type_Type_MIN = StanMessage_Type_UNKNOWN;
+const StanMessage_Type StanMessage_Type_Type_MAX = StanMessage_Type_COMPILE_CHECK;
 const int StanMessage_Type_Type_ARRAYSIZE = StanMessage_Type_Type_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* StanMessage_Type_descriptor();
@@ -63,14 +68,17 @@ inline bool StanMessage_Type_Parse(
     StanMessage_Type_descriptor(), name, value);
 }
 enum StanCompileResponse_State {
-  StanCompileResponse_State_COMPILE_INCOMPLETE = 0,
-  StanCompileResponse_State_COMPILE_SUCCESS = 1,
-  StanCompileResponse_State_COMPILE_WARN = 2,
-  StanCompileResponse_State_COMPILE_ERROR = 3
+  StanCompileResponse_State_UNKNOWN = 0,
+  StanCompileResponse_State_INCOMPLETE = 1,
+  StanCompileResponse_State_SUCCESS = 2,
+  StanCompileResponse_State_WARN = 3,
+  StanCompileResponse_State_ERROR = 4,
+  StanCompileResponse_State_StanCompileResponse_State_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  StanCompileResponse_State_StanCompileResponse_State_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool StanCompileResponse_State_IsValid(int value);
-const StanCompileResponse_State StanCompileResponse_State_State_MIN = StanCompileResponse_State_COMPILE_INCOMPLETE;
-const StanCompileResponse_State StanCompileResponse_State_State_MAX = StanCompileResponse_State_COMPILE_ERROR;
+const StanCompileResponse_State StanCompileResponse_State_State_MIN = StanCompileResponse_State_UNKNOWN;
+const StanCompileResponse_State StanCompileResponse_State_State_MAX = StanCompileResponse_State_ERROR;
 const int StanCompileResponse_State_State_ARRAYSIZE = StanCompileResponse_State_State_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* StanCompileResponse_State_descriptor();
@@ -95,14 +103,6 @@ class StanMessage : public ::google::protobuf::Message {
   inline StanMessage& operator=(const StanMessage& from) {
     CopyFrom(from);
     return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields();
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields();
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
@@ -148,10 +148,11 @@ class StanMessage : public ::google::protobuf::Message {
   // nested types ----------------------------------------------------
 
   typedef StanMessage_Type Type;
-  static const Type STAN_EMPTY = StanMessage_Type_STAN_EMPTY;
-  static const Type STAN_COMPILE_REQUEST = StanMessage_Type_STAN_COMPILE_REQUEST;
-  static const Type STAN_COMPILE_RESPONSE = StanMessage_Type_STAN_COMPILE_RESPONSE;
-  static const Type STAN_COMPILE_CHECK = StanMessage_Type_STAN_COMPILE_CHECK;
+  static const Type UNKNOWN = StanMessage_Type_UNKNOWN;
+  static const Type EMPTY = StanMessage_Type_EMPTY;
+  static const Type COMPILE_REQUEST = StanMessage_Type_COMPILE_REQUEST;
+  static const Type COMPILE_RESPONSE = StanMessage_Type_COMPILE_RESPONSE;
+  static const Type COMPILE_CHECK = StanMessage_Type_COMPILE_CHECK;
   static inline bool Type_IsValid(int value) {
     return StanMessage_Type_IsValid(value);
   }
@@ -175,58 +176,39 @@ class StanMessage : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required .StanMessage.Type type = 1;
-  bool has_type() const;
+  // optional .stan.serve.StanMessage.Type type = 1;
   void clear_type();
   static const int kTypeFieldNumber = 1;
-  ::StanMessage_Type type() const;
-  void set_type(::StanMessage_Type value);
+  ::stan::serve::StanMessage_Type type() const;
+  void set_type(::stan::serve::StanMessage_Type value);
 
-  // optional .StanCompileRequest stan_compile_request = 2;
+  // optional .stan.serve.StanCompileRequest stan_compile_request = 2;
   bool has_stan_compile_request() const;
   void clear_stan_compile_request();
   static const int kStanCompileRequestFieldNumber = 2;
-  const ::StanCompileRequest& stan_compile_request() const;
-  ::StanCompileRequest* mutable_stan_compile_request();
-  ::StanCompileRequest* release_stan_compile_request();
-  void set_allocated_stan_compile_request(::StanCompileRequest* stan_compile_request);
+  const ::stan::serve::StanCompileRequest& stan_compile_request() const;
+  ::stan::serve::StanCompileRequest* mutable_stan_compile_request();
+  ::stan::serve::StanCompileRequest* release_stan_compile_request();
+  void set_allocated_stan_compile_request(::stan::serve::StanCompileRequest* stan_compile_request);
 
-  // optional .StanCompileResponse stan_compile_response = 3;
+  // optional .stan.serve.StanCompileResponse stan_compile_response = 3;
   bool has_stan_compile_response() const;
   void clear_stan_compile_response();
   static const int kStanCompileResponseFieldNumber = 3;
-  const ::StanCompileResponse& stan_compile_response() const;
-  ::StanCompileResponse* mutable_stan_compile_response();
-  ::StanCompileResponse* release_stan_compile_response();
-  void set_allocated_stan_compile_response(::StanCompileResponse* stan_compile_response);
+  const ::stan::serve::StanCompileResponse& stan_compile_response() const;
+  ::stan::serve::StanCompileResponse* mutable_stan_compile_response();
+  ::stan::serve::StanCompileResponse* release_stan_compile_response();
+  void set_allocated_stan_compile_response(::stan::serve::StanCompileResponse* stan_compile_response);
 
-  // optional .StanCompileCheck stan_compile_check = 4;
-  bool has_stan_compile_check() const;
-  void clear_stan_compile_check();
-  static const int kStanCompileCheckFieldNumber = 4;
-  const ::StanCompileCheck& stan_compile_check() const;
-  ::StanCompileCheck* mutable_stan_compile_check();
-  ::StanCompileCheck* release_stan_compile_check();
-  void set_allocated_stan_compile_check(::StanCompileCheck* stan_compile_check);
-
-  // @@protoc_insertion_point(class_scope:StanMessage)
+  // @@protoc_insertion_point(class_scope:stan.serve.StanMessage)
  private:
-  inline void set_has_type();
-  inline void clear_has_type();
-  inline void set_has_stan_compile_request();
-  inline void clear_has_stan_compile_request();
-  inline void set_has_stan_compile_response();
-  inline void clear_has_stan_compile_response();
-  inline void set_has_stan_compile_check();
-  inline void clear_has_stan_compile_check();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::StanCompileRequest* stan_compile_request_;
-  ::StanCompileResponse* stan_compile_response_;
-  ::StanCompileCheck* stan_compile_check_;
+  bool _is_default_instance_;
+  ::stan::serve::StanCompileRequest* stan_compile_request_;
+  ::stan::serve::StanCompileResponse* stan_compile_response_;
   int type_;
+  mutable int _cached_size_;
   friend void  protobuf_AddDesc_proto_2fstanc_2eproto();
   friend void protobuf_AssignDesc_proto_2fstanc_2eproto();
   friend void protobuf_ShutdownFile_proto_2fstanc_2eproto();
@@ -246,14 +228,6 @@ class StanVersion : public ::google::protobuf::Message {
   inline StanVersion& operator=(const StanVersion& from) {
     CopyFrom(from);
     return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields();
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields();
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
@@ -300,8 +274,7 @@ class StanVersion : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required string version = 1;
-  bool has_version() const;
+  // optional string version = 1;
   void clear_version();
   static const int kVersionFieldNumber = 1;
   const ::std::string& version() const;
@@ -313,7 +286,6 @@ class StanVersion : public ::google::protobuf::Message {
   void set_allocated_version(::std::string* version);
 
   // optional string stan_math_hash = 2;
-  bool has_stan_math_hash() const;
   void clear_stan_math_hash();
   static const int kStanMathHashFieldNumber = 2;
   const ::std::string& stan_math_hash() const;
@@ -325,7 +297,6 @@ class StanVersion : public ::google::protobuf::Message {
   void set_allocated_stan_math_hash(::std::string* stan_math_hash);
 
   // optional string stan_stan_hash = 3;
-  bool has_stan_stan_hash() const;
   void clear_stan_stan_hash();
   static const int kStanStanHashFieldNumber = 3;
   const ::std::string& stan_stan_hash() const;
@@ -336,21 +307,15 @@ class StanVersion : public ::google::protobuf::Message {
   ::std::string* release_stan_stan_hash();
   void set_allocated_stan_stan_hash(::std::string* stan_stan_hash);
 
-  // @@protoc_insertion_point(class_scope:StanVersion)
+  // @@protoc_insertion_point(class_scope:stan.serve.StanVersion)
  private:
-  inline void set_has_version();
-  inline void clear_has_version();
-  inline void set_has_stan_math_hash();
-  inline void clear_has_stan_math_hash();
-  inline void set_has_stan_stan_hash();
-  inline void clear_has_stan_stan_hash();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
+  bool _is_default_instance_;
   ::google::protobuf::internal::ArenaStringPtr version_;
   ::google::protobuf::internal::ArenaStringPtr stan_math_hash_;
   ::google::protobuf::internal::ArenaStringPtr stan_stan_hash_;
+  mutable int _cached_size_;
   friend void  protobuf_AddDesc_proto_2fstanc_2eproto();
   friend void protobuf_AssignDesc_proto_2fstanc_2eproto();
   friend void protobuf_ShutdownFile_proto_2fstanc_2eproto();
@@ -370,14 +335,6 @@ class StanCompileRequest : public ::google::protobuf::Message {
   inline StanCompileRequest& operator=(const StanCompileRequest& from) {
     CopyFrom(from);
     return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields();
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields();
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
@@ -425,7 +382,6 @@ class StanCompileRequest : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // optional string model_name = 1;
-  bool has_model_name() const;
   void clear_model_name();
   static const int kModelNameFieldNumber = 1;
   const ::std::string& model_name() const;
@@ -436,8 +392,7 @@ class StanCompileRequest : public ::google::protobuf::Message {
   ::std::string* release_model_name();
   void set_allocated_model_name(::std::string* model_name);
 
-  // required string model_code = 2;
-  bool has_model_code() const;
+  // optional string model_code = 2;
   void clear_model_code();
   static const int kModelCodeFieldNumber = 2;
   const ::std::string& model_code() const;
@@ -449,7 +404,6 @@ class StanCompileRequest : public ::google::protobuf::Message {
   void set_allocated_model_code(::std::string* model_code);
 
   // optional string model_file_name = 3;
-  bool has_model_file_name() const;
   void clear_model_file_name();
   static const int kModelFileNameFieldNumber = 3;
   const ::std::string& model_file_name() const;
@@ -460,133 +414,21 @@ class StanCompileRequest : public ::google::protobuf::Message {
   ::std::string* release_model_file_name();
   void set_allocated_model_file_name(::std::string* model_file_name);
 
-  // @@protoc_insertion_point(class_scope:StanCompileRequest)
+  // @@protoc_insertion_point(class_scope:stan.serve.StanCompileRequest)
  private:
-  inline void set_has_model_name();
-  inline void clear_has_model_name();
-  inline void set_has_model_code();
-  inline void clear_has_model_code();
-  inline void set_has_model_file_name();
-  inline void clear_has_model_file_name();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
+  bool _is_default_instance_;
   ::google::protobuf::internal::ArenaStringPtr model_name_;
   ::google::protobuf::internal::ArenaStringPtr model_code_;
   ::google::protobuf::internal::ArenaStringPtr model_file_name_;
+  mutable int _cached_size_;
   friend void  protobuf_AddDesc_proto_2fstanc_2eproto();
   friend void protobuf_AssignDesc_proto_2fstanc_2eproto();
   friend void protobuf_ShutdownFile_proto_2fstanc_2eproto();
 
   void InitAsDefaultInstance();
   static StanCompileRequest* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class StanCompileCheck : public ::google::protobuf::Message {
- public:
-  StanCompileCheck();
-  virtual ~StanCompileCheck();
-
-  StanCompileCheck(const StanCompileCheck& from);
-
-  inline StanCompileCheck& operator=(const StanCompileCheck& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields();
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields();
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const StanCompileCheck& default_instance();
-
-  void Swap(StanCompileCheck* other);
-
-  // implements Message ----------------------------------------------
-
-  inline StanCompileCheck* New() const { return New(NULL); }
-
-  StanCompileCheck* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const StanCompileCheck& from);
-  void MergeFrom(const StanCompileCheck& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  void InternalSwap(StanCompileCheck* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
-  }
-  inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // required string hash = 1;
-  bool has_hash() const;
-  void clear_hash();
-  static const int kHashFieldNumber = 1;
-  const ::std::string& hash() const;
-  void set_hash(const ::std::string& value);
-  void set_hash(const char* value);
-  void set_hash(const char* value, size_t size);
-  ::std::string* mutable_hash();
-  ::std::string* release_hash();
-  void set_allocated_hash(::std::string* hash);
-
-  // optional .StanVersion stan_version = 2;
-  bool has_stan_version() const;
-  void clear_stan_version();
-  static const int kStanVersionFieldNumber = 2;
-  const ::StanVersion& stan_version() const;
-  ::StanVersion* mutable_stan_version();
-  ::StanVersion* release_stan_version();
-  void set_allocated_stan_version(::StanVersion* stan_version);
-
-  // @@protoc_insertion_point(class_scope:StanCompileCheck)
- private:
-  inline void set_has_hash();
-  inline void clear_has_hash();
-  inline void set_has_stan_version();
-  inline void clear_has_stan_version();
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::google::protobuf::internal::ArenaStringPtr hash_;
-  ::StanVersion* stan_version_;
-  friend void  protobuf_AddDesc_proto_2fstanc_2eproto();
-  friend void protobuf_AssignDesc_proto_2fstanc_2eproto();
-  friend void protobuf_ShutdownFile_proto_2fstanc_2eproto();
-
-  void InitAsDefaultInstance();
-  static StanCompileCheck* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -600,14 +442,6 @@ class StanCompileResponse : public ::google::protobuf::Message {
   inline StanCompileResponse& operator=(const StanCompileResponse& from) {
     CopyFrom(from);
     return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields();
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields();
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
@@ -653,10 +487,11 @@ class StanCompileResponse : public ::google::protobuf::Message {
   // nested types ----------------------------------------------------
 
   typedef StanCompileResponse_State State;
-  static const State COMPILE_INCOMPLETE = StanCompileResponse_State_COMPILE_INCOMPLETE;
-  static const State COMPILE_SUCCESS = StanCompileResponse_State_COMPILE_SUCCESS;
-  static const State COMPILE_WARN = StanCompileResponse_State_COMPILE_WARN;
-  static const State COMPILE_ERROR = StanCompileResponse_State_COMPILE_ERROR;
+  static const State UNKNOWN = StanCompileResponse_State_UNKNOWN;
+  static const State INCOMPLETE = StanCompileResponse_State_INCOMPLETE;
+  static const State SUCCESS = StanCompileResponse_State_SUCCESS;
+  static const State WARN = StanCompileResponse_State_WARN;
+  static const State ERROR = StanCompileResponse_State_ERROR;
   static inline bool State_IsValid(int value) {
     return StanCompileResponse_State_IsValid(value);
   }
@@ -680,27 +515,13 @@ class StanCompileResponse : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required string hash = 1;
-  bool has_hash() const;
-  void clear_hash();
-  static const int kHashFieldNumber = 1;
-  const ::std::string& hash() const;
-  void set_hash(const ::std::string& value);
-  void set_hash(const char* value);
-  void set_hash(const char* value, size_t size);
-  ::std::string* mutable_hash();
-  ::std::string* release_hash();
-  void set_allocated_hash(::std::string* hash);
-
-  // required .StanCompileResponse.State state = 2;
-  bool has_state() const;
+  // optional .stan.serve.StanCompileResponse.State state = 2;
   void clear_state();
   static const int kStateFieldNumber = 2;
-  ::StanCompileResponse_State state() const;
-  void set_state(::StanCompileResponse_State value);
+  ::stan::serve::StanCompileResponse_State state() const;
+  void set_state(::stan::serve::StanCompileResponse_State value);
 
   // optional string cpp_code = 3;
-  bool has_cpp_code() const;
   void clear_cpp_code();
   static const int kCppCodeFieldNumber = 3;
   const ::std::string& cpp_code() const;
@@ -712,7 +533,6 @@ class StanCompileResponse : public ::google::protobuf::Message {
   void set_allocated_cpp_code(::std::string* cpp_code);
 
   // optional string messages = 4;
-  bool has_messages() const;
   void clear_messages();
   static const int kMessagesFieldNumber = 4;
   const ::std::string& messages() const;
@@ -723,39 +543,15 @@ class StanCompileResponse : public ::google::protobuf::Message {
   ::std::string* release_messages();
   void set_allocated_messages(::std::string* messages);
 
-  // required .StanVersion stan_version = 5;
-  bool has_stan_version() const;
-  void clear_stan_version();
-  static const int kStanVersionFieldNumber = 5;
-  const ::StanVersion& stan_version() const;
-  ::StanVersion* mutable_stan_version();
-  ::StanVersion* release_stan_version();
-  void set_allocated_stan_version(::StanVersion* stan_version);
-
-  // @@protoc_insertion_point(class_scope:StanCompileResponse)
+  // @@protoc_insertion_point(class_scope:stan.serve.StanCompileResponse)
  private:
-  inline void set_has_hash();
-  inline void clear_has_hash();
-  inline void set_has_state();
-  inline void clear_has_state();
-  inline void set_has_cpp_code();
-  inline void clear_has_cpp_code();
-  inline void set_has_messages();
-  inline void clear_has_messages();
-  inline void set_has_stan_version();
-  inline void clear_has_stan_version();
-
-  // helper for ByteSize()
-  int RequiredFieldsByteSizeFallback() const;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::google::protobuf::internal::ArenaStringPtr hash_;
+  bool _is_default_instance_;
   ::google::protobuf::internal::ArenaStringPtr cpp_code_;
   ::google::protobuf::internal::ArenaStringPtr messages_;
-  ::StanVersion* stan_version_;
   int state_;
+  mutable int _cached_size_;
   friend void  protobuf_AddDesc_proto_2fstanc_2eproto();
   friend void protobuf_AssignDesc_proto_2fstanc_2eproto();
   friend void protobuf_ShutdownFile_proto_2fstanc_2eproto();
@@ -771,321 +567,225 @@ class StanCompileResponse : public ::google::protobuf::Message {
 #if !PROTOBUF_INLINE_NOT_IN_HEADERS
 // StanMessage
 
-// required .StanMessage.Type type = 1;
-inline bool StanMessage::has_type() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void StanMessage::set_has_type() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void StanMessage::clear_has_type() {
-  _has_bits_[0] &= ~0x00000001u;
-}
+// optional .stan.serve.StanMessage.Type type = 1;
 inline void StanMessage::clear_type() {
   type_ = 0;
-  clear_has_type();
 }
-inline ::StanMessage_Type StanMessage::type() const {
-  // @@protoc_insertion_point(field_get:StanMessage.type)
-  return static_cast< ::StanMessage_Type >(type_);
+inline ::stan::serve::StanMessage_Type StanMessage::type() const {
+  // @@protoc_insertion_point(field_get:stan.serve.StanMessage.type)
+  return static_cast< ::stan::serve::StanMessage_Type >(type_);
 }
-inline void StanMessage::set_type(::StanMessage_Type value) {
-  assert(::StanMessage_Type_IsValid(value));
-  set_has_type();
+inline void StanMessage::set_type(::stan::serve::StanMessage_Type value) {
+  
   type_ = value;
-  // @@protoc_insertion_point(field_set:StanMessage.type)
+  // @@protoc_insertion_point(field_set:stan.serve.StanMessage.type)
 }
 
-// optional .StanCompileRequest stan_compile_request = 2;
+// optional .stan.serve.StanCompileRequest stan_compile_request = 2;
 inline bool StanMessage::has_stan_compile_request() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void StanMessage::set_has_stan_compile_request() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void StanMessage::clear_has_stan_compile_request() {
-  _has_bits_[0] &= ~0x00000002u;
+  return !_is_default_instance_ && stan_compile_request_ != NULL;
 }
 inline void StanMessage::clear_stan_compile_request() {
-  if (stan_compile_request_ != NULL) stan_compile_request_->::StanCompileRequest::Clear();
-  clear_has_stan_compile_request();
+  if (GetArenaNoVirtual() == NULL && stan_compile_request_ != NULL) delete stan_compile_request_;
+  stan_compile_request_ = NULL;
 }
-inline const ::StanCompileRequest& StanMessage::stan_compile_request() const {
-  // @@protoc_insertion_point(field_get:StanMessage.stan_compile_request)
+inline const ::stan::serve::StanCompileRequest& StanMessage::stan_compile_request() const {
+  // @@protoc_insertion_point(field_get:stan.serve.StanMessage.stan_compile_request)
   return stan_compile_request_ != NULL ? *stan_compile_request_ : *default_instance_->stan_compile_request_;
 }
-inline ::StanCompileRequest* StanMessage::mutable_stan_compile_request() {
-  set_has_stan_compile_request();
+inline ::stan::serve::StanCompileRequest* StanMessage::mutable_stan_compile_request() {
+  
   if (stan_compile_request_ == NULL) {
-    stan_compile_request_ = new ::StanCompileRequest;
+    stan_compile_request_ = new ::stan::serve::StanCompileRequest;
   }
-  // @@protoc_insertion_point(field_mutable:StanMessage.stan_compile_request)
+  // @@protoc_insertion_point(field_mutable:stan.serve.StanMessage.stan_compile_request)
   return stan_compile_request_;
 }
-inline ::StanCompileRequest* StanMessage::release_stan_compile_request() {
-  clear_has_stan_compile_request();
-  ::StanCompileRequest* temp = stan_compile_request_;
+inline ::stan::serve::StanCompileRequest* StanMessage::release_stan_compile_request() {
+  
+  ::stan::serve::StanCompileRequest* temp = stan_compile_request_;
   stan_compile_request_ = NULL;
   return temp;
 }
-inline void StanMessage::set_allocated_stan_compile_request(::StanCompileRequest* stan_compile_request) {
+inline void StanMessage::set_allocated_stan_compile_request(::stan::serve::StanCompileRequest* stan_compile_request) {
   delete stan_compile_request_;
   stan_compile_request_ = stan_compile_request;
   if (stan_compile_request) {
-    set_has_stan_compile_request();
+    
   } else {
-    clear_has_stan_compile_request();
+    
   }
-  // @@protoc_insertion_point(field_set_allocated:StanMessage.stan_compile_request)
+  // @@protoc_insertion_point(field_set_allocated:stan.serve.StanMessage.stan_compile_request)
 }
 
-// optional .StanCompileResponse stan_compile_response = 3;
+// optional .stan.serve.StanCompileResponse stan_compile_response = 3;
 inline bool StanMessage::has_stan_compile_response() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void StanMessage::set_has_stan_compile_response() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void StanMessage::clear_has_stan_compile_response() {
-  _has_bits_[0] &= ~0x00000004u;
+  return !_is_default_instance_ && stan_compile_response_ != NULL;
 }
 inline void StanMessage::clear_stan_compile_response() {
-  if (stan_compile_response_ != NULL) stan_compile_response_->::StanCompileResponse::Clear();
-  clear_has_stan_compile_response();
+  if (GetArenaNoVirtual() == NULL && stan_compile_response_ != NULL) delete stan_compile_response_;
+  stan_compile_response_ = NULL;
 }
-inline const ::StanCompileResponse& StanMessage::stan_compile_response() const {
-  // @@protoc_insertion_point(field_get:StanMessage.stan_compile_response)
+inline const ::stan::serve::StanCompileResponse& StanMessage::stan_compile_response() const {
+  // @@protoc_insertion_point(field_get:stan.serve.StanMessage.stan_compile_response)
   return stan_compile_response_ != NULL ? *stan_compile_response_ : *default_instance_->stan_compile_response_;
 }
-inline ::StanCompileResponse* StanMessage::mutable_stan_compile_response() {
-  set_has_stan_compile_response();
+inline ::stan::serve::StanCompileResponse* StanMessage::mutable_stan_compile_response() {
+  
   if (stan_compile_response_ == NULL) {
-    stan_compile_response_ = new ::StanCompileResponse;
+    stan_compile_response_ = new ::stan::serve::StanCompileResponse;
   }
-  // @@protoc_insertion_point(field_mutable:StanMessage.stan_compile_response)
+  // @@protoc_insertion_point(field_mutable:stan.serve.StanMessage.stan_compile_response)
   return stan_compile_response_;
 }
-inline ::StanCompileResponse* StanMessage::release_stan_compile_response() {
-  clear_has_stan_compile_response();
-  ::StanCompileResponse* temp = stan_compile_response_;
+inline ::stan::serve::StanCompileResponse* StanMessage::release_stan_compile_response() {
+  
+  ::stan::serve::StanCompileResponse* temp = stan_compile_response_;
   stan_compile_response_ = NULL;
   return temp;
 }
-inline void StanMessage::set_allocated_stan_compile_response(::StanCompileResponse* stan_compile_response) {
+inline void StanMessage::set_allocated_stan_compile_response(::stan::serve::StanCompileResponse* stan_compile_response) {
   delete stan_compile_response_;
   stan_compile_response_ = stan_compile_response;
   if (stan_compile_response) {
-    set_has_stan_compile_response();
+    
   } else {
-    clear_has_stan_compile_response();
+    
   }
-  // @@protoc_insertion_point(field_set_allocated:StanMessage.stan_compile_response)
-}
-
-// optional .StanCompileCheck stan_compile_check = 4;
-inline bool StanMessage::has_stan_compile_check() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void StanMessage::set_has_stan_compile_check() {
-  _has_bits_[0] |= 0x00000008u;
-}
-inline void StanMessage::clear_has_stan_compile_check() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline void StanMessage::clear_stan_compile_check() {
-  if (stan_compile_check_ != NULL) stan_compile_check_->::StanCompileCheck::Clear();
-  clear_has_stan_compile_check();
-}
-inline const ::StanCompileCheck& StanMessage::stan_compile_check() const {
-  // @@protoc_insertion_point(field_get:StanMessage.stan_compile_check)
-  return stan_compile_check_ != NULL ? *stan_compile_check_ : *default_instance_->stan_compile_check_;
-}
-inline ::StanCompileCheck* StanMessage::mutable_stan_compile_check() {
-  set_has_stan_compile_check();
-  if (stan_compile_check_ == NULL) {
-    stan_compile_check_ = new ::StanCompileCheck;
-  }
-  // @@protoc_insertion_point(field_mutable:StanMessage.stan_compile_check)
-  return stan_compile_check_;
-}
-inline ::StanCompileCheck* StanMessage::release_stan_compile_check() {
-  clear_has_stan_compile_check();
-  ::StanCompileCheck* temp = stan_compile_check_;
-  stan_compile_check_ = NULL;
-  return temp;
-}
-inline void StanMessage::set_allocated_stan_compile_check(::StanCompileCheck* stan_compile_check) {
-  delete stan_compile_check_;
-  stan_compile_check_ = stan_compile_check;
-  if (stan_compile_check) {
-    set_has_stan_compile_check();
-  } else {
-    clear_has_stan_compile_check();
-  }
-  // @@protoc_insertion_point(field_set_allocated:StanMessage.stan_compile_check)
+  // @@protoc_insertion_point(field_set_allocated:stan.serve.StanMessage.stan_compile_response)
 }
 
 // -------------------------------------------------------------------
 
 // StanVersion
 
-// required string version = 1;
-inline bool StanVersion::has_version() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void StanVersion::set_has_version() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void StanVersion::clear_has_version() {
-  _has_bits_[0] &= ~0x00000001u;
-}
+// optional string version = 1;
 inline void StanVersion::clear_version() {
   version_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_version();
 }
 inline const ::std::string& StanVersion::version() const {
-  // @@protoc_insertion_point(field_get:StanVersion.version)
+  // @@protoc_insertion_point(field_get:stan.serve.StanVersion.version)
   return version_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline void StanVersion::set_version(const ::std::string& value) {
-  set_has_version();
+  
   version_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:StanVersion.version)
+  // @@protoc_insertion_point(field_set:stan.serve.StanVersion.version)
 }
 inline void StanVersion::set_version(const char* value) {
-  set_has_version();
+  
   version_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:StanVersion.version)
+  // @@protoc_insertion_point(field_set_char:stan.serve.StanVersion.version)
 }
 inline void StanVersion::set_version(const char* value, size_t size) {
-  set_has_version();
+  
   version_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:StanVersion.version)
+  // @@protoc_insertion_point(field_set_pointer:stan.serve.StanVersion.version)
 }
 inline ::std::string* StanVersion::mutable_version() {
-  set_has_version();
-  // @@protoc_insertion_point(field_mutable:StanVersion.version)
+  
+  // @@protoc_insertion_point(field_mutable:stan.serve.StanVersion.version)
   return version_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* StanVersion::release_version() {
-  clear_has_version();
+  
   return version_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline void StanVersion::set_allocated_version(::std::string* version) {
   if (version != NULL) {
-    set_has_version();
+    
   } else {
-    clear_has_version();
+    
   }
   version_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), version);
-  // @@protoc_insertion_point(field_set_allocated:StanVersion.version)
+  // @@protoc_insertion_point(field_set_allocated:stan.serve.StanVersion.version)
 }
 
 // optional string stan_math_hash = 2;
-inline bool StanVersion::has_stan_math_hash() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void StanVersion::set_has_stan_math_hash() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void StanVersion::clear_has_stan_math_hash() {
-  _has_bits_[0] &= ~0x00000002u;
-}
 inline void StanVersion::clear_stan_math_hash() {
   stan_math_hash_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_stan_math_hash();
 }
 inline const ::std::string& StanVersion::stan_math_hash() const {
-  // @@protoc_insertion_point(field_get:StanVersion.stan_math_hash)
+  // @@protoc_insertion_point(field_get:stan.serve.StanVersion.stan_math_hash)
   return stan_math_hash_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline void StanVersion::set_stan_math_hash(const ::std::string& value) {
-  set_has_stan_math_hash();
+  
   stan_math_hash_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:StanVersion.stan_math_hash)
+  // @@protoc_insertion_point(field_set:stan.serve.StanVersion.stan_math_hash)
 }
 inline void StanVersion::set_stan_math_hash(const char* value) {
-  set_has_stan_math_hash();
+  
   stan_math_hash_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:StanVersion.stan_math_hash)
+  // @@protoc_insertion_point(field_set_char:stan.serve.StanVersion.stan_math_hash)
 }
 inline void StanVersion::set_stan_math_hash(const char* value, size_t size) {
-  set_has_stan_math_hash();
+  
   stan_math_hash_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:StanVersion.stan_math_hash)
+  // @@protoc_insertion_point(field_set_pointer:stan.serve.StanVersion.stan_math_hash)
 }
 inline ::std::string* StanVersion::mutable_stan_math_hash() {
-  set_has_stan_math_hash();
-  // @@protoc_insertion_point(field_mutable:StanVersion.stan_math_hash)
+  
+  // @@protoc_insertion_point(field_mutable:stan.serve.StanVersion.stan_math_hash)
   return stan_math_hash_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* StanVersion::release_stan_math_hash() {
-  clear_has_stan_math_hash();
+  
   return stan_math_hash_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline void StanVersion::set_allocated_stan_math_hash(::std::string* stan_math_hash) {
   if (stan_math_hash != NULL) {
-    set_has_stan_math_hash();
+    
   } else {
-    clear_has_stan_math_hash();
+    
   }
   stan_math_hash_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), stan_math_hash);
-  // @@protoc_insertion_point(field_set_allocated:StanVersion.stan_math_hash)
+  // @@protoc_insertion_point(field_set_allocated:stan.serve.StanVersion.stan_math_hash)
 }
 
 // optional string stan_stan_hash = 3;
-inline bool StanVersion::has_stan_stan_hash() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void StanVersion::set_has_stan_stan_hash() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void StanVersion::clear_has_stan_stan_hash() {
-  _has_bits_[0] &= ~0x00000004u;
-}
 inline void StanVersion::clear_stan_stan_hash() {
   stan_stan_hash_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_stan_stan_hash();
 }
 inline const ::std::string& StanVersion::stan_stan_hash() const {
-  // @@protoc_insertion_point(field_get:StanVersion.stan_stan_hash)
+  // @@protoc_insertion_point(field_get:stan.serve.StanVersion.stan_stan_hash)
   return stan_stan_hash_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline void StanVersion::set_stan_stan_hash(const ::std::string& value) {
-  set_has_stan_stan_hash();
+  
   stan_stan_hash_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:StanVersion.stan_stan_hash)
+  // @@protoc_insertion_point(field_set:stan.serve.StanVersion.stan_stan_hash)
 }
 inline void StanVersion::set_stan_stan_hash(const char* value) {
-  set_has_stan_stan_hash();
+  
   stan_stan_hash_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:StanVersion.stan_stan_hash)
+  // @@protoc_insertion_point(field_set_char:stan.serve.StanVersion.stan_stan_hash)
 }
 inline void StanVersion::set_stan_stan_hash(const char* value, size_t size) {
-  set_has_stan_stan_hash();
+  
   stan_stan_hash_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:StanVersion.stan_stan_hash)
+  // @@protoc_insertion_point(field_set_pointer:stan.serve.StanVersion.stan_stan_hash)
 }
 inline ::std::string* StanVersion::mutable_stan_stan_hash() {
-  set_has_stan_stan_hash();
-  // @@protoc_insertion_point(field_mutable:StanVersion.stan_stan_hash)
+  
+  // @@protoc_insertion_point(field_mutable:stan.serve.StanVersion.stan_stan_hash)
   return stan_stan_hash_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* StanVersion::release_stan_stan_hash() {
-  clear_has_stan_stan_hash();
+  
   return stan_stan_hash_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline void StanVersion::set_allocated_stan_stan_hash(::std::string* stan_stan_hash) {
   if (stan_stan_hash != NULL) {
-    set_has_stan_stan_hash();
+    
   } else {
-    clear_has_stan_stan_hash();
+    
   }
   stan_stan_hash_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), stan_stan_hash);
-  // @@protoc_insertion_point(field_set_allocated:StanVersion.stan_stan_hash)
+  // @@protoc_insertion_point(field_set_allocated:stan.serve.StanVersion.stan_stan_hash)
 }
 
 // -------------------------------------------------------------------
@@ -1093,493 +793,236 @@ inline void StanVersion::set_allocated_stan_stan_hash(::std::string* stan_stan_h
 // StanCompileRequest
 
 // optional string model_name = 1;
-inline bool StanCompileRequest::has_model_name() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void StanCompileRequest::set_has_model_name() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void StanCompileRequest::clear_has_model_name() {
-  _has_bits_[0] &= ~0x00000001u;
-}
 inline void StanCompileRequest::clear_model_name() {
   model_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_model_name();
 }
 inline const ::std::string& StanCompileRequest::model_name() const {
-  // @@protoc_insertion_point(field_get:StanCompileRequest.model_name)
+  // @@protoc_insertion_point(field_get:stan.serve.StanCompileRequest.model_name)
   return model_name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline void StanCompileRequest::set_model_name(const ::std::string& value) {
-  set_has_model_name();
+  
   model_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:StanCompileRequest.model_name)
+  // @@protoc_insertion_point(field_set:stan.serve.StanCompileRequest.model_name)
 }
 inline void StanCompileRequest::set_model_name(const char* value) {
-  set_has_model_name();
+  
   model_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:StanCompileRequest.model_name)
+  // @@protoc_insertion_point(field_set_char:stan.serve.StanCompileRequest.model_name)
 }
 inline void StanCompileRequest::set_model_name(const char* value, size_t size) {
-  set_has_model_name();
+  
   model_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:StanCompileRequest.model_name)
+  // @@protoc_insertion_point(field_set_pointer:stan.serve.StanCompileRequest.model_name)
 }
 inline ::std::string* StanCompileRequest::mutable_model_name() {
-  set_has_model_name();
-  // @@protoc_insertion_point(field_mutable:StanCompileRequest.model_name)
+  
+  // @@protoc_insertion_point(field_mutable:stan.serve.StanCompileRequest.model_name)
   return model_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* StanCompileRequest::release_model_name() {
-  clear_has_model_name();
+  
   return model_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline void StanCompileRequest::set_allocated_model_name(::std::string* model_name) {
   if (model_name != NULL) {
-    set_has_model_name();
+    
   } else {
-    clear_has_model_name();
+    
   }
   model_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), model_name);
-  // @@protoc_insertion_point(field_set_allocated:StanCompileRequest.model_name)
+  // @@protoc_insertion_point(field_set_allocated:stan.serve.StanCompileRequest.model_name)
 }
 
-// required string model_code = 2;
-inline bool StanCompileRequest::has_model_code() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void StanCompileRequest::set_has_model_code() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void StanCompileRequest::clear_has_model_code() {
-  _has_bits_[0] &= ~0x00000002u;
-}
+// optional string model_code = 2;
 inline void StanCompileRequest::clear_model_code() {
   model_code_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_model_code();
 }
 inline const ::std::string& StanCompileRequest::model_code() const {
-  // @@protoc_insertion_point(field_get:StanCompileRequest.model_code)
+  // @@protoc_insertion_point(field_get:stan.serve.StanCompileRequest.model_code)
   return model_code_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline void StanCompileRequest::set_model_code(const ::std::string& value) {
-  set_has_model_code();
+  
   model_code_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:StanCompileRequest.model_code)
+  // @@protoc_insertion_point(field_set:stan.serve.StanCompileRequest.model_code)
 }
 inline void StanCompileRequest::set_model_code(const char* value) {
-  set_has_model_code();
+  
   model_code_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:StanCompileRequest.model_code)
+  // @@protoc_insertion_point(field_set_char:stan.serve.StanCompileRequest.model_code)
 }
 inline void StanCompileRequest::set_model_code(const char* value, size_t size) {
-  set_has_model_code();
+  
   model_code_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:StanCompileRequest.model_code)
+  // @@protoc_insertion_point(field_set_pointer:stan.serve.StanCompileRequest.model_code)
 }
 inline ::std::string* StanCompileRequest::mutable_model_code() {
-  set_has_model_code();
-  // @@protoc_insertion_point(field_mutable:StanCompileRequest.model_code)
+  
+  // @@protoc_insertion_point(field_mutable:stan.serve.StanCompileRequest.model_code)
   return model_code_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* StanCompileRequest::release_model_code() {
-  clear_has_model_code();
+  
   return model_code_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline void StanCompileRequest::set_allocated_model_code(::std::string* model_code) {
   if (model_code != NULL) {
-    set_has_model_code();
+    
   } else {
-    clear_has_model_code();
+    
   }
   model_code_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), model_code);
-  // @@protoc_insertion_point(field_set_allocated:StanCompileRequest.model_code)
+  // @@protoc_insertion_point(field_set_allocated:stan.serve.StanCompileRequest.model_code)
 }
 
 // optional string model_file_name = 3;
-inline bool StanCompileRequest::has_model_file_name() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void StanCompileRequest::set_has_model_file_name() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void StanCompileRequest::clear_has_model_file_name() {
-  _has_bits_[0] &= ~0x00000004u;
-}
 inline void StanCompileRequest::clear_model_file_name() {
   model_file_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_model_file_name();
 }
 inline const ::std::string& StanCompileRequest::model_file_name() const {
-  // @@protoc_insertion_point(field_get:StanCompileRequest.model_file_name)
+  // @@protoc_insertion_point(field_get:stan.serve.StanCompileRequest.model_file_name)
   return model_file_name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline void StanCompileRequest::set_model_file_name(const ::std::string& value) {
-  set_has_model_file_name();
+  
   model_file_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:StanCompileRequest.model_file_name)
+  // @@protoc_insertion_point(field_set:stan.serve.StanCompileRequest.model_file_name)
 }
 inline void StanCompileRequest::set_model_file_name(const char* value) {
-  set_has_model_file_name();
+  
   model_file_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:StanCompileRequest.model_file_name)
+  // @@protoc_insertion_point(field_set_char:stan.serve.StanCompileRequest.model_file_name)
 }
 inline void StanCompileRequest::set_model_file_name(const char* value, size_t size) {
-  set_has_model_file_name();
+  
   model_file_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:StanCompileRequest.model_file_name)
+  // @@protoc_insertion_point(field_set_pointer:stan.serve.StanCompileRequest.model_file_name)
 }
 inline ::std::string* StanCompileRequest::mutable_model_file_name() {
-  set_has_model_file_name();
-  // @@protoc_insertion_point(field_mutable:StanCompileRequest.model_file_name)
+  
+  // @@protoc_insertion_point(field_mutable:stan.serve.StanCompileRequest.model_file_name)
   return model_file_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* StanCompileRequest::release_model_file_name() {
-  clear_has_model_file_name();
+  
   return model_file_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline void StanCompileRequest::set_allocated_model_file_name(::std::string* model_file_name) {
   if (model_file_name != NULL) {
-    set_has_model_file_name();
+    
   } else {
-    clear_has_model_file_name();
+    
   }
   model_file_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), model_file_name);
-  // @@protoc_insertion_point(field_set_allocated:StanCompileRequest.model_file_name)
-}
-
-// -------------------------------------------------------------------
-
-// StanCompileCheck
-
-// required string hash = 1;
-inline bool StanCompileCheck::has_hash() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void StanCompileCheck::set_has_hash() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void StanCompileCheck::clear_has_hash() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void StanCompileCheck::clear_hash() {
-  hash_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_hash();
-}
-inline const ::std::string& StanCompileCheck::hash() const {
-  // @@protoc_insertion_point(field_get:StanCompileCheck.hash)
-  return hash_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void StanCompileCheck::set_hash(const ::std::string& value) {
-  set_has_hash();
-  hash_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:StanCompileCheck.hash)
-}
-inline void StanCompileCheck::set_hash(const char* value) {
-  set_has_hash();
-  hash_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:StanCompileCheck.hash)
-}
-inline void StanCompileCheck::set_hash(const char* value, size_t size) {
-  set_has_hash();
-  hash_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:StanCompileCheck.hash)
-}
-inline ::std::string* StanCompileCheck::mutable_hash() {
-  set_has_hash();
-  // @@protoc_insertion_point(field_mutable:StanCompileCheck.hash)
-  return hash_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* StanCompileCheck::release_hash() {
-  clear_has_hash();
-  return hash_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void StanCompileCheck::set_allocated_hash(::std::string* hash) {
-  if (hash != NULL) {
-    set_has_hash();
-  } else {
-    clear_has_hash();
-  }
-  hash_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), hash);
-  // @@protoc_insertion_point(field_set_allocated:StanCompileCheck.hash)
-}
-
-// optional .StanVersion stan_version = 2;
-inline bool StanCompileCheck::has_stan_version() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void StanCompileCheck::set_has_stan_version() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void StanCompileCheck::clear_has_stan_version() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void StanCompileCheck::clear_stan_version() {
-  if (stan_version_ != NULL) stan_version_->::StanVersion::Clear();
-  clear_has_stan_version();
-}
-inline const ::StanVersion& StanCompileCheck::stan_version() const {
-  // @@protoc_insertion_point(field_get:StanCompileCheck.stan_version)
-  return stan_version_ != NULL ? *stan_version_ : *default_instance_->stan_version_;
-}
-inline ::StanVersion* StanCompileCheck::mutable_stan_version() {
-  set_has_stan_version();
-  if (stan_version_ == NULL) {
-    stan_version_ = new ::StanVersion;
-  }
-  // @@protoc_insertion_point(field_mutable:StanCompileCheck.stan_version)
-  return stan_version_;
-}
-inline ::StanVersion* StanCompileCheck::release_stan_version() {
-  clear_has_stan_version();
-  ::StanVersion* temp = stan_version_;
-  stan_version_ = NULL;
-  return temp;
-}
-inline void StanCompileCheck::set_allocated_stan_version(::StanVersion* stan_version) {
-  delete stan_version_;
-  stan_version_ = stan_version;
-  if (stan_version) {
-    set_has_stan_version();
-  } else {
-    clear_has_stan_version();
-  }
-  // @@protoc_insertion_point(field_set_allocated:StanCompileCheck.stan_version)
+  // @@protoc_insertion_point(field_set_allocated:stan.serve.StanCompileRequest.model_file_name)
 }
 
 // -------------------------------------------------------------------
 
 // StanCompileResponse
 
-// required string hash = 1;
-inline bool StanCompileResponse::has_hash() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void StanCompileResponse::set_has_hash() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void StanCompileResponse::clear_has_hash() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void StanCompileResponse::clear_hash() {
-  hash_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_hash();
-}
-inline const ::std::string& StanCompileResponse::hash() const {
-  // @@protoc_insertion_point(field_get:StanCompileResponse.hash)
-  return hash_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void StanCompileResponse::set_hash(const ::std::string& value) {
-  set_has_hash();
-  hash_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:StanCompileResponse.hash)
-}
-inline void StanCompileResponse::set_hash(const char* value) {
-  set_has_hash();
-  hash_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:StanCompileResponse.hash)
-}
-inline void StanCompileResponse::set_hash(const char* value, size_t size) {
-  set_has_hash();
-  hash_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:StanCompileResponse.hash)
-}
-inline ::std::string* StanCompileResponse::mutable_hash() {
-  set_has_hash();
-  // @@protoc_insertion_point(field_mutable:StanCompileResponse.hash)
-  return hash_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* StanCompileResponse::release_hash() {
-  clear_has_hash();
-  return hash_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void StanCompileResponse::set_allocated_hash(::std::string* hash) {
-  if (hash != NULL) {
-    set_has_hash();
-  } else {
-    clear_has_hash();
-  }
-  hash_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), hash);
-  // @@protoc_insertion_point(field_set_allocated:StanCompileResponse.hash)
-}
-
-// required .StanCompileResponse.State state = 2;
-inline bool StanCompileResponse::has_state() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void StanCompileResponse::set_has_state() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void StanCompileResponse::clear_has_state() {
-  _has_bits_[0] &= ~0x00000002u;
-}
+// optional .stan.serve.StanCompileResponse.State state = 2;
 inline void StanCompileResponse::clear_state() {
   state_ = 0;
-  clear_has_state();
 }
-inline ::StanCompileResponse_State StanCompileResponse::state() const {
-  // @@protoc_insertion_point(field_get:StanCompileResponse.state)
-  return static_cast< ::StanCompileResponse_State >(state_);
+inline ::stan::serve::StanCompileResponse_State StanCompileResponse::state() const {
+  // @@protoc_insertion_point(field_get:stan.serve.StanCompileResponse.state)
+  return static_cast< ::stan::serve::StanCompileResponse_State >(state_);
 }
-inline void StanCompileResponse::set_state(::StanCompileResponse_State value) {
-  assert(::StanCompileResponse_State_IsValid(value));
-  set_has_state();
+inline void StanCompileResponse::set_state(::stan::serve::StanCompileResponse_State value) {
+  
   state_ = value;
-  // @@protoc_insertion_point(field_set:StanCompileResponse.state)
+  // @@protoc_insertion_point(field_set:stan.serve.StanCompileResponse.state)
 }
 
 // optional string cpp_code = 3;
-inline bool StanCompileResponse::has_cpp_code() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void StanCompileResponse::set_has_cpp_code() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void StanCompileResponse::clear_has_cpp_code() {
-  _has_bits_[0] &= ~0x00000004u;
-}
 inline void StanCompileResponse::clear_cpp_code() {
   cpp_code_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_cpp_code();
 }
 inline const ::std::string& StanCompileResponse::cpp_code() const {
-  // @@protoc_insertion_point(field_get:StanCompileResponse.cpp_code)
+  // @@protoc_insertion_point(field_get:stan.serve.StanCompileResponse.cpp_code)
   return cpp_code_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline void StanCompileResponse::set_cpp_code(const ::std::string& value) {
-  set_has_cpp_code();
+  
   cpp_code_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:StanCompileResponse.cpp_code)
+  // @@protoc_insertion_point(field_set:stan.serve.StanCompileResponse.cpp_code)
 }
 inline void StanCompileResponse::set_cpp_code(const char* value) {
-  set_has_cpp_code();
+  
   cpp_code_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:StanCompileResponse.cpp_code)
+  // @@protoc_insertion_point(field_set_char:stan.serve.StanCompileResponse.cpp_code)
 }
 inline void StanCompileResponse::set_cpp_code(const char* value, size_t size) {
-  set_has_cpp_code();
+  
   cpp_code_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:StanCompileResponse.cpp_code)
+  // @@protoc_insertion_point(field_set_pointer:stan.serve.StanCompileResponse.cpp_code)
 }
 inline ::std::string* StanCompileResponse::mutable_cpp_code() {
-  set_has_cpp_code();
-  // @@protoc_insertion_point(field_mutable:StanCompileResponse.cpp_code)
+  
+  // @@protoc_insertion_point(field_mutable:stan.serve.StanCompileResponse.cpp_code)
   return cpp_code_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* StanCompileResponse::release_cpp_code() {
-  clear_has_cpp_code();
+  
   return cpp_code_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline void StanCompileResponse::set_allocated_cpp_code(::std::string* cpp_code) {
   if (cpp_code != NULL) {
-    set_has_cpp_code();
+    
   } else {
-    clear_has_cpp_code();
+    
   }
   cpp_code_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), cpp_code);
-  // @@protoc_insertion_point(field_set_allocated:StanCompileResponse.cpp_code)
+  // @@protoc_insertion_point(field_set_allocated:stan.serve.StanCompileResponse.cpp_code)
 }
 
 // optional string messages = 4;
-inline bool StanCompileResponse::has_messages() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void StanCompileResponse::set_has_messages() {
-  _has_bits_[0] |= 0x00000008u;
-}
-inline void StanCompileResponse::clear_has_messages() {
-  _has_bits_[0] &= ~0x00000008u;
-}
 inline void StanCompileResponse::clear_messages() {
   messages_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_messages();
 }
 inline const ::std::string& StanCompileResponse::messages() const {
-  // @@protoc_insertion_point(field_get:StanCompileResponse.messages)
+  // @@protoc_insertion_point(field_get:stan.serve.StanCompileResponse.messages)
   return messages_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline void StanCompileResponse::set_messages(const ::std::string& value) {
-  set_has_messages();
+  
   messages_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:StanCompileResponse.messages)
+  // @@protoc_insertion_point(field_set:stan.serve.StanCompileResponse.messages)
 }
 inline void StanCompileResponse::set_messages(const char* value) {
-  set_has_messages();
+  
   messages_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:StanCompileResponse.messages)
+  // @@protoc_insertion_point(field_set_char:stan.serve.StanCompileResponse.messages)
 }
 inline void StanCompileResponse::set_messages(const char* value, size_t size) {
-  set_has_messages();
+  
   messages_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:StanCompileResponse.messages)
+  // @@protoc_insertion_point(field_set_pointer:stan.serve.StanCompileResponse.messages)
 }
 inline ::std::string* StanCompileResponse::mutable_messages() {
-  set_has_messages();
-  // @@protoc_insertion_point(field_mutable:StanCompileResponse.messages)
+  
+  // @@protoc_insertion_point(field_mutable:stan.serve.StanCompileResponse.messages)
   return messages_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* StanCompileResponse::release_messages() {
-  clear_has_messages();
+  
   return messages_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline void StanCompileResponse::set_allocated_messages(::std::string* messages) {
   if (messages != NULL) {
-    set_has_messages();
+    
   } else {
-    clear_has_messages();
+    
   }
   messages_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), messages);
-  // @@protoc_insertion_point(field_set_allocated:StanCompileResponse.messages)
-}
-
-// required .StanVersion stan_version = 5;
-inline bool StanCompileResponse::has_stan_version() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
-}
-inline void StanCompileResponse::set_has_stan_version() {
-  _has_bits_[0] |= 0x00000010u;
-}
-inline void StanCompileResponse::clear_has_stan_version() {
-  _has_bits_[0] &= ~0x00000010u;
-}
-inline void StanCompileResponse::clear_stan_version() {
-  if (stan_version_ != NULL) stan_version_->::StanVersion::Clear();
-  clear_has_stan_version();
-}
-inline const ::StanVersion& StanCompileResponse::stan_version() const {
-  // @@protoc_insertion_point(field_get:StanCompileResponse.stan_version)
-  return stan_version_ != NULL ? *stan_version_ : *default_instance_->stan_version_;
-}
-inline ::StanVersion* StanCompileResponse::mutable_stan_version() {
-  set_has_stan_version();
-  if (stan_version_ == NULL) {
-    stan_version_ = new ::StanVersion;
-  }
-  // @@protoc_insertion_point(field_mutable:StanCompileResponse.stan_version)
-  return stan_version_;
-}
-inline ::StanVersion* StanCompileResponse::release_stan_version() {
-  clear_has_stan_version();
-  ::StanVersion* temp = stan_version_;
-  stan_version_ = NULL;
-  return temp;
-}
-inline void StanCompileResponse::set_allocated_stan_version(::StanVersion* stan_version) {
-  delete stan_version_;
-  stan_version_ = stan_version;
-  if (stan_version) {
-    set_has_stan_version();
-  } else {
-    clear_has_stan_version();
-  }
-  // @@protoc_insertion_point(field_set_allocated:StanCompileResponse.stan_version)
+  // @@protoc_insertion_point(field_set_allocated:stan.serve.StanCompileResponse.messages)
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -1589,24 +1032,25 @@ inline void StanCompileResponse::set_allocated_stan_version(::StanVersion* stan_
 
 // -------------------------------------------------------------------
 
-// -------------------------------------------------------------------
-
 
 // @@protoc_insertion_point(namespace_scope)
+
+}  // namespace serve
+}  // namespace stan
 
 #ifndef SWIG
 namespace google {
 namespace protobuf {
 
-template <> struct is_proto_enum< ::StanMessage_Type> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::stan::serve::StanMessage_Type> : ::google::protobuf::internal::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::StanMessage_Type>() {
-  return ::StanMessage_Type_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::stan::serve::StanMessage_Type>() {
+  return ::stan::serve::StanMessage_Type_descriptor();
 }
-template <> struct is_proto_enum< ::StanCompileResponse_State> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::stan::serve::StanCompileResponse_State> : ::google::protobuf::internal::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::StanCompileResponse_State>() {
-  return ::StanCompileResponse_State_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::stan::serve::StanCompileResponse_State>() {
+  return ::stan::serve::StanCompileResponse_State_descriptor();
 }
 
 }  // namespace protobuf

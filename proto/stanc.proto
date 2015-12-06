@@ -1,68 +1,54 @@
-syntax = "proto2";
+syntax = "proto3";
+
+package stan.serve;
 
 // This design follows the 'union types' techniques suggestion from 
 // https://developers.google.com/protocol-buffers/docs/techniques
 message StanMessage {
   enum Type {
-    STAN_EMPTY = 0;
-    STAN_COMPILE_REQUEST = 1;
-    STAN_COMPILE_RESPONSE = 2;
-    STAN_COMPILE_CHECK = 3;
+    UNKNOWN = 0;
+    EMPTY = 1;
+    COMPILE_REQUEST = 2;
+    COMPILE_RESPONSE = 3;
+    COMPILE_CHECK = 4;
   }
-  required Type type = 1;
-  optional StanCompileRequest stan_compile_request = 2;
-  optional StanCompileResponse stan_compile_response = 3;
-  optional StanCompileCheck stan_compile_check = 4;
+  Type type = 1;
+  StanCompileRequest stan_compile_request = 2;
+  StanCompileResponse stan_compile_response = 3;
 }
 
 // Obvious?
 message StanVersion {
-  required string version = 1;
-  optional string stan_math_hash = 2;
-  optional string stan_stan_hash = 3;
+  string version = 1;
+  string stan_math_hash = 2;
+  string stan_stan_hash = 3;
 }
 
 // This one is straightforward in the sense that it should just match
 // what CmdStan/etc... do. 
 message StanCompileRequest {
-  optional string model_name = 1;
-  required string model_code = 2;
-  optional string model_file_name = 3;
+  string model_name = 1;
+  string model_code = 2;
+  string model_file_name = 3;
 }
 
-// A client should be able to check with the server if a request has
-// been processed.  This should just be based on the hash of the input
-// program string.... but maybe more?
-message StanCompileCheck {
-  required string hash = 1;
-  optional StanVersion stan_version = 2;
-}
-
-
-// This is a little more complicated b/c my goals were:
-// 1) the client that sent a request should be able to get 
-//    a hash in response pretty immediately;
-// 2) any client should be able to check on a request by supplying a
-//    message with a hash; and 
-// 3) any client should be able to retrieve the Stan code that went with
-//    a model on the server side.
+// Pretty straight-up stanc, with a state flag:
 message StanCompileResponse {
-  required string hash = 1;
   enum State {
-    COMPILE_INCOMPLETE = 0;  // compilation is not finished.
-    COMPILE_SUCCESS = 1;     // compilation succeeded
-    COMPILE_WARN = 2;      // compilation succeeded, check message for issues.
-    COMPILE_ERROR = 3;       // compilation failed, check message for errors.
+    UNKNOWN = 0;     // deafult in case of bad set value.
+    INCOMPLETE = 1;  // compilation is not finished.
+    SUCCESS = 2;     // compilation succeeded
+    WARN = 3;        // compilation succeeded, check message for issues.
+    ERROR = 4;       // compilation failed, check message for errors.
   }
-  required State state = 2;
-  optional string cpp_code = 3;
-  optional string messages = 4;
-  required StanVersion stan_version = 5;
+  State state = 2;
+  string cpp_code = 3;
+  string messages = 4;
+//  StanVersion stan_version = 5;  ... not now....
 }
 
 service CompileService {
   rpc CompileProgram(StanCompileRequest) returns (StanCompileResponse) {}
-  rpc CompileCheck(StanCompileCheck) returns (StanCompileResponse) {}
 }
 
 

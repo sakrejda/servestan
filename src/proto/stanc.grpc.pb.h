@@ -23,41 +23,33 @@ class ServerCompletionQueue;
 class ServerContext;
 }  // namespace grpc
 
+namespace stan {
+namespace serve {
+
 class CompileService GRPC_FINAL {
  public:
   class StubInterface {
    public:
     virtual ~StubInterface() {}
-    virtual ::grpc::Status CompileProgram(::grpc::ClientContext* context, const ::StanCompileRequest& request, ::StanCompileResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::StanCompileResponse>> AsyncCompileProgram(::grpc::ClientContext* context, const ::StanCompileRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::StanCompileResponse>>(AsyncCompileProgramRaw(context, request, cq));
-    }
-    virtual ::grpc::Status CompileCheck(::grpc::ClientContext* context, const ::StanCompileCheck& request, ::StanCompileResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::StanCompileResponse>> AsyncCompileCheck(::grpc::ClientContext* context, const ::StanCompileCheck& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::StanCompileResponse>>(AsyncCompileCheckRaw(context, request, cq));
+    virtual ::grpc::Status CompileProgram(::grpc::ClientContext* context, const ::stan::serve::StanCompileRequest& request, ::stan::serve::StanCompileResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::stan::serve::StanCompileResponse>> AsyncCompileProgram(::grpc::ClientContext* context, const ::stan::serve::StanCompileRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::stan::serve::StanCompileResponse>>(AsyncCompileProgramRaw(context, request, cq));
     }
   private:
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::StanCompileResponse>* AsyncCompileProgramRaw(::grpc::ClientContext* context, const ::StanCompileRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::StanCompileResponse>* AsyncCompileCheckRaw(::grpc::ClientContext* context, const ::StanCompileCheck& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::stan::serve::StanCompileResponse>* AsyncCompileProgramRaw(::grpc::ClientContext* context, const ::stan::serve::StanCompileRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub GRPC_FINAL : public StubInterface {
    public:
     Stub(const std::shared_ptr< ::grpc::Channel>& channel);
-    ::grpc::Status CompileProgram(::grpc::ClientContext* context, const ::StanCompileRequest& request, ::StanCompileResponse* response) GRPC_OVERRIDE;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::StanCompileResponse>> AsyncCompileProgram(::grpc::ClientContext* context, const ::StanCompileRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::StanCompileResponse>>(AsyncCompileProgramRaw(context, request, cq));
-    }
-    ::grpc::Status CompileCheck(::grpc::ClientContext* context, const ::StanCompileCheck& request, ::StanCompileResponse* response) GRPC_OVERRIDE;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::StanCompileResponse>> AsyncCompileCheck(::grpc::ClientContext* context, const ::StanCompileCheck& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::StanCompileResponse>>(AsyncCompileCheckRaw(context, request, cq));
+    ::grpc::Status CompileProgram(::grpc::ClientContext* context, const ::stan::serve::StanCompileRequest& request, ::stan::serve::StanCompileResponse* response) GRPC_OVERRIDE;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::stan::serve::StanCompileResponse>> AsyncCompileProgram(::grpc::ClientContext* context, const ::stan::serve::StanCompileRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::stan::serve::StanCompileResponse>>(AsyncCompileProgramRaw(context, request, cq));
     }
 
    private:
     std::shared_ptr< ::grpc::Channel> channel_;
-    ::grpc::ClientAsyncResponseReader< ::StanCompileResponse>* AsyncCompileProgramRaw(::grpc::ClientContext* context, const ::StanCompileRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
-    ::grpc::ClientAsyncResponseReader< ::StanCompileResponse>* AsyncCompileCheckRaw(::grpc::ClientContext* context, const ::StanCompileCheck& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
+    ::grpc::ClientAsyncResponseReader< ::stan::serve::StanCompileResponse>* AsyncCompileProgramRaw(::grpc::ClientContext* context, const ::stan::serve::StanCompileRequest& request, ::grpc::CompletionQueue* cq) GRPC_OVERRIDE;
     const ::grpc::RpcMethod rpcmethod_CompileProgram_;
-    const ::grpc::RpcMethod rpcmethod_CompileCheck_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::Channel>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -65,8 +57,7 @@ class CompileService GRPC_FINAL {
    public:
     Service();
     virtual ~Service();
-    virtual ::grpc::Status CompileProgram(::grpc::ServerContext* context, const ::StanCompileRequest* request, ::StanCompileResponse* response);
-    virtual ::grpc::Status CompileCheck(::grpc::ServerContext* context, const ::StanCompileCheck* request, ::StanCompileResponse* response);
+    virtual ::grpc::Status CompileProgram(::grpc::ServerContext* context, const ::stan::serve::StanCompileRequest* request, ::stan::serve::StanCompileResponse* response);
     ::grpc::RpcService* service() GRPC_OVERRIDE GRPC_FINAL;
    private:
     std::unique_ptr< ::grpc::RpcService> service_;
@@ -75,10 +66,12 @@ class CompileService GRPC_FINAL {
    public:
     explicit AsyncService();
     ~AsyncService() {};
-    void RequestCompileProgram(::grpc::ServerContext* context, ::StanCompileRequest* request, ::grpc::ServerAsyncResponseWriter< ::StanCompileResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
-    void RequestCompileCheck(::grpc::ServerContext* context, ::StanCompileCheck* request, ::grpc::ServerAsyncResponseWriter< ::StanCompileResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
+    void RequestCompileProgram(::grpc::ServerContext* context, ::stan::serve::StanCompileRequest* request, ::grpc::ServerAsyncResponseWriter< ::stan::serve::StanCompileResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag);
   };
 };
+
+}  // namespace serve
+}  // namespace stan
 
 
 #endif  // GRPC_proto_2fstanc_2eproto__INCLUDED

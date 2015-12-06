@@ -12,10 +12,11 @@
 #include <grpc++/support/async_unary_call.h>
 #include <grpc++/support/async_stream.h>
 #include <grpc++/support/sync_stream.h>
+namespace stan {
+namespace serve {
 
 static const char* CompileService_method_names[] = {
-  "/CompileService/CompileProgram",
-  "/CompileService/CompileCheck",
+  "/stan.serve.CompileService/CompileProgram",
 };
 
 std::unique_ptr< CompileService::Stub> CompileService::NewStub(const std::shared_ptr< ::grpc::Channel>& channel, const ::grpc::StubOptions& options) {
@@ -25,26 +26,17 @@ std::unique_ptr< CompileService::Stub> CompileService::NewStub(const std::shared
 
 CompileService::Stub::Stub(const std::shared_ptr< ::grpc::Channel>& channel)
   : channel_(channel), rpcmethod_CompileProgram_(CompileService_method_names[0], ::grpc::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_CompileCheck_(CompileService_method_names[1], ::grpc::RpcMethod::NORMAL_RPC, channel)
   {}
 
-::grpc::Status CompileService::Stub::CompileProgram(::grpc::ClientContext* context, const ::StanCompileRequest& request, ::StanCompileResponse* response) {
+::grpc::Status CompileService::Stub::CompileProgram(::grpc::ClientContext* context, const ::stan::serve::StanCompileRequest& request, ::stan::serve::StanCompileResponse* response) {
   return ::grpc::BlockingUnaryCall(channel_.get(), rpcmethod_CompileProgram_, context, request, response);
 }
 
-::grpc::ClientAsyncResponseReader< ::StanCompileResponse>* CompileService::Stub::AsyncCompileProgramRaw(::grpc::ClientContext* context, const ::StanCompileRequest& request, ::grpc::CompletionQueue* cq) {
-  return new ::grpc::ClientAsyncResponseReader< ::StanCompileResponse>(channel_.get(), cq, rpcmethod_CompileProgram_, context, request);
+::grpc::ClientAsyncResponseReader< ::stan::serve::StanCompileResponse>* CompileService::Stub::AsyncCompileProgramRaw(::grpc::ClientContext* context, const ::stan::serve::StanCompileRequest& request, ::grpc::CompletionQueue* cq) {
+  return new ::grpc::ClientAsyncResponseReader< ::stan::serve::StanCompileResponse>(channel_.get(), cq, rpcmethod_CompileProgram_, context, request);
 }
 
-::grpc::Status CompileService::Stub::CompileCheck(::grpc::ClientContext* context, const ::StanCompileCheck& request, ::StanCompileResponse* response) {
-  return ::grpc::BlockingUnaryCall(channel_.get(), rpcmethod_CompileCheck_, context, request, response);
-}
-
-::grpc::ClientAsyncResponseReader< ::StanCompileResponse>* CompileService::Stub::AsyncCompileCheckRaw(::grpc::ClientContext* context, const ::StanCompileCheck& request, ::grpc::CompletionQueue* cq) {
-  return new ::grpc::ClientAsyncResponseReader< ::StanCompileResponse>(channel_.get(), cq, rpcmethod_CompileCheck_, context, request);
-}
-
-CompileService::AsyncService::AsyncService() : ::grpc::AsynchronousService(CompileService_method_names, 2) {}
+CompileService::AsyncService::AsyncService() : ::grpc::AsynchronousService(CompileService_method_names, 1) {}
 
 CompileService::Service::Service() {
 }
@@ -52,26 +44,15 @@ CompileService::Service::Service() {
 CompileService::Service::~Service() {
 }
 
-::grpc::Status CompileService::Service::CompileProgram(::grpc::ServerContext* context, const ::StanCompileRequest* request, ::StanCompileResponse* response) {
+::grpc::Status CompileService::Service::CompileProgram(::grpc::ServerContext* context, const ::stan::serve::StanCompileRequest* request, ::stan::serve::StanCompileResponse* response) {
   (void) context;
   (void) request;
   (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-void CompileService::AsyncService::RequestCompileProgram(::grpc::ServerContext* context, ::StanCompileRequest* request, ::grpc::ServerAsyncResponseWriter< ::StanCompileResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+void CompileService::AsyncService::RequestCompileProgram(::grpc::ServerContext* context, ::stan::serve::StanCompileRequest* request, ::grpc::ServerAsyncResponseWriter< ::stan::serve::StanCompileResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
   AsynchronousService::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
-}
-
-::grpc::Status CompileService::Service::CompileCheck(::grpc::ServerContext* context, const ::StanCompileCheck* request, ::StanCompileResponse* response) {
-  (void) context;
-  (void) request;
-  (void) response;
-  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-}
-
-void CompileService::AsyncService::RequestCompileCheck(::grpc::ServerContext* context, ::StanCompileCheck* request, ::grpc::ServerAsyncResponseWriter< ::StanCompileResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-  AsynchronousService::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
 }
 
 ::grpc::RpcService* CompileService::Service::service() {
@@ -82,14 +63,12 @@ void CompileService::AsyncService::RequestCompileCheck(::grpc::ServerContext* co
   service_->AddMethod(new ::grpc::RpcServiceMethod(
       CompileService_method_names[0],
       ::grpc::RpcMethod::NORMAL_RPC,
-      new ::grpc::RpcMethodHandler< CompileService::Service, ::StanCompileRequest, ::StanCompileResponse>(
+      new ::grpc::RpcMethodHandler< CompileService::Service, ::stan::serve::StanCompileRequest, ::stan::serve::StanCompileResponse>(
           std::mem_fn(&CompileService::Service::CompileProgram), this)));
-  service_->AddMethod(new ::grpc::RpcServiceMethod(
-      CompileService_method_names[1],
-      ::grpc::RpcMethod::NORMAL_RPC,
-      new ::grpc::RpcMethodHandler< CompileService::Service, ::StanCompileCheck, ::StanCompileResponse>(
-          std::mem_fn(&CompileService::Service::CompileCheck), this)));
   return service_.get();
 }
 
+
+}  // namespace stan
+}  // namespace serve
 
