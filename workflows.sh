@@ -1,8 +1,13 @@
-## The following relative paths are relative to the 'servestan'
-## directory.
+## Now the structure is:
+##    $ROOT/servestan
+##    $ROOT/servestan/lib/grpc
+##    $ROOT/servestan/lib/stan
+## grpc and stan are submodules so to clone this mess:
 
-# Cloning grpc, then 'make'
-git clone https://github.com/grpc/grpc.git
+git clone https://github.com/sakrejda/servestan.git
+git submodule update --init --recursive
+
+# To generate the protoc compiler:
 cd grpc
 git checkout release-0_12   ## The master branch a.t.m. is missing grpc++.h
 git submodule update --init
