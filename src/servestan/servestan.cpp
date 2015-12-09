@@ -10,7 +10,7 @@
 namespace stan {
   namespace serve {
 
-    class CompileServiceImpl final : public CompileService {
+    class CompileServiceImpl final : public CompileService::Service {
       grpc::Status CompileProgram(grpc::ServerContext* context,
         const stan::serve::StanCompileRequest* request, 
               stan::serve::StanCompileResponse* reply ) override {
@@ -20,7 +20,7 @@ namespace stan {
         std::istringstream stan_stream(request->model_code());
         std::ostringstream cpp_stream;
         
-        bool valid_model = stan::lang::compile(err_stream, 
+        bool valid_model = stan::lang::compile(&err_stream, 
           stan_stream, cpp_stream, 
           request->model_name(), request->model_file_name());
         reply->set_messages(err_stream.str());
@@ -53,7 +53,7 @@ void RunServer() {
 }
 
 int main(int argc, char** argv) {
-  grpc::RunServer();
+  RunServer();
   return 0;
 }
     

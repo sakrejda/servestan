@@ -1,0 +1,6 @@
+[submodule "lib/grpc"]
+	path = lib/grpc
+	url = https://github.com/grpc/grpc.git
+[submodule "lib/stan"]
+	path = lib/stan
+	url = https://github.com/stan-dev/stan.git
