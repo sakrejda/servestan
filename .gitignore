@@ -1,3 +1,5 @@
+*.o
+
 # mac os x hidden file
 .DS_Store
 
